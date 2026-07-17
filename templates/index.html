@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="ur">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fatima V-Downloader</title>
     <style>
         body { background: #1a0b2e; color: white; font-family: sans-serif; display: flex; justify-content: center; padding: 20px; }
-        .container { background: #2d1b4e; padding: 25px; border-radius: 20px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { margin-bottom: 20px; color: #fff; }
+        .container { background: #2d1b4e; padding: 25px; border-radius: 20px; width: 100%; max-width: 400px; text-align: center; }
         input { width: 100%; padding: 15px; margin: 10px 0; border: none; border-radius: 10px; box-sizing: border-box; }
-        button { width: 100%; padding: 15px; background: linear-gradient(90deg, #6a11cb, #2575fc); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+        button { width: 100%; padding: 15px; background: linear-gradient(90deg, #6a11cb, #2575fc); color: white; border: none; border-radius: 10px; cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Fatima V-Downloader</h1>
-        <form action="/download" method="POST">
-            <input type="text" name="url" placeholder="Paste link here..." required>
-            <button type="submit">Download Now</button>
-        </form>
+        <input type="text" id="url" placeholder="Paste link here...">
+        <button onclick="fetchVideo()">Download Now</button>
+        <div id="result"></div>
     </div>
+    <script>
+        function fetchVideo() {
+            let url = document.getElementById('url').value;
+            fetch('/process', { method: 'POST', body: new URLSearchParams({'url': url}) })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('result').innerHTML = '<h3>' + data.title + '</h3><a href="' + data.url + '">Click to Download</a>';
+            });
+        }
+    </script>
 </body>
 </html>
