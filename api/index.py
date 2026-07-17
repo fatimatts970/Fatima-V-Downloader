@@ -15,9 +15,10 @@ def download():
         ydl_opts = {'format': 'best'}
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=False)
-            return jsonify({'title': info.get('title'), 'url': info.get('url')})
+            return jsonify({'success': True, 'title': info.get('title'), 'url': info.get('url')})
     except Exception as e:
-        return jsonify({'error': str(e)})
+        return jsonify({'success': False, 'error': str(e)})
 
 if __name__ == '__main__':
     app.run()
+
