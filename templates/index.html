@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="ur">
 <head>
-    <title>Fatima All V-Downloader</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatima V-Downloader</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 20px; background: #f4f4f4; }
+        .container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
 </head>
 <body>
-    <h1>Fatima All V-Downloader</h1>
-    <form action="/download" method="POST">
-        <input type="text" name="url" placeholder="Paste link here..." required>
-        <button type="submit">Download</button>
-    </form>
+    <div class="container">
+        <h1>Fatima V-Downloader</h1>
+        <form action="/download" method="POST">
+            <input type="text" name="url" placeholder="Paste link here..." required>
+            <button type="submit">Download Now</button>
+        </form>
+    </div>
 </body>
 </html>
