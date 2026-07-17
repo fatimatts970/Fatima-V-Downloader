@@ -10,8 +10,9 @@ def index():
 
 @app.route('/download', methods=['POST'])
 def download():
-    url = request.form.get('url')
-    return f"Aapne ye link bheji hai: {url}"
+    video_url = request.form.get('url')
+    # Yahan hum baad mein downloader library (yt-dlp) add karenge
+    return f"<h1>Link mil gayi!</h1><p>{video_url}</p><p>Video processing shuru ho rahi hai...</p>"
 
 if __name__ == '__main__':
     app.run(debug=True)
