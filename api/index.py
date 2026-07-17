@@ -1,13 +1,12 @@
 from flask import Flask, render_template
+import os
 
-app = Flask(__name__)
+# Yahan hum explicitly templates folder ka path de rahe hain
+app = Flask(__name__, template_folder='../templates')
 
 @app.route('/')
 def index():
     return render_template('index.html')
-
-# Agar aapke paas aur routes ya logic hai, toh yahan add karein.
-# Yaad rakhein: Vercel ko sirf 'app' variable chahiye.
 
 if __name__ == '__main__':
     app.run(debug=True)
