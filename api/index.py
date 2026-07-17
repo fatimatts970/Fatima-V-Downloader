@@ -1,8 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import os
 
-# Yahan hum explicitly templates folder ka path de rahe hain
-app = Flask(__name__, template_folder='../templates')
+# Absolute path set karna taaki templates mil jayein
+template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../templates'))
+app = Flask(__name__, template_folder=template_dir)
 
 @app.route('/')
 def index():
