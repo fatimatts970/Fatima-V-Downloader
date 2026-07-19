@@ -269,6 +269,13 @@ function escapeHtml(str){
   return d.innerHTML;
 }
 
+function formatDuration(secs){
+  secs = Math.round(secs);
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  return `${m}:${s < 10 ? '0' : ''}${s}`;
+}
+
 fetchBtn.onclick = async function(){
   const url = tiktokUrl.value.trim();
   if(!url){
@@ -295,10 +302,11 @@ fetchBtn.onclick = async function(){
 
     const title = escapeHtml(data.title || 'tiktok_video');
     const safeFilename = title.replace(/[^a-z0-9]+/gi, '_').slice(0, 60) || 'fatima_tiktok';
+    const durationText = data.duration ? formatDuration(data.duration) : null;
 
     let thumbHtml = data.thumbnail
-      ? `<img src="${data.thumbnail}" class="w-16 h-24 object-cover rounded-lg" alt="thumbnail">`
-      : `<div class="w-16 h-24 rounded-lg bg-white/10 flex items-center justify-center"><i class="fa-solid fa-video text-white/40"></i></div>`;
+      ? `<img src="${data.thumbnail}" class="w-20 h-28 object-cover rounded-xl shrink-0" alt="thumbnail">`
+      : `<div class="w-20 h-28 rounded-xl bg-white/10 flex items-center justify-center shrink-0"><i class="fa-solid fa-video text-white/40 text-lg"></i></div>`;
 
     let audioBtn = data.audio_url
       ? `<a href="/api/download?src=${encodeURIComponent(data.audio_url)}&type=audio&filename=${encodeURIComponent(safeFilename)}.mp3"
@@ -307,16 +315,25 @@ fetchBtn.onclick = async function(){
       : '';
 
     resultArea.innerHTML = `
-      <div class="result-card paste-card p-4 text-left flex gap-3">
-        ${thumbHtml}
-        <div class="flex-1 min-w-0">
-          <p class="text-white text-xs font-semibold line-clamp-2">${title}</p>
-          <p class="text-white/40 text-[11px] mt-0.5">${data.uploader ? '@' + escapeHtml(data.uploader) : ''}</p>
-          <div class="flex gap-2 mt-3">
-            <a href="/api/download?src=${encodeURIComponent(data.video_url)}&type=video&filename=${encodeURIComponent(safeFilename)}.mp4"
-               class="flex-1 text-center btn-primary text-xs font-bold rounded-lg py-2.5">
-               <i class="fa-solid fa-video mr-1"></i> Video</a>
-            ${audioBtn}
+      <div class="result-card paste-card p-4 text-left">
+        <div class="flex items-center gap-2 mb-3 pb-3 border-b border-white/10">
+          <i class="fa-solid fa-circle-check text-[var(--cyan)] text-sm"></i>
+          <span class="text-white/70 text-xs font-semibold uppercase tracking-wide">Ready to download</span>
+        </div>
+        <div class="flex gap-3.5">
+          <div class="relative shrink-0">
+            ${thumbHtml}
+            ${durationText ? `<span class="absolute bottom-1.5 right-1.5 bg-black/70 text-white text-[10px] font-semibold px-1.5 py-0.5 rounded">${durationText}</span>` : ''}
+          </div>
+          <div class="flex-1 min-w-0 flex flex-col">
+            <p class="text-white text-sm font-bold leading-snug line-clamp-3">${title}</p>
+            ${data.uploader ? `<p class="text-[var(--cyan)] text-xs font-medium mt-1.5"><i class="fa-solid fa-user text-[10px] mr-1"></i>@${escapeHtml(data.uploader)}</p>` : ''}
+            <div class="flex gap-2 mt-auto pt-3">
+              <a href="/api/download?src=${encodeURIComponent(data.video_url)}&type=video&filename=${encodeURIComponent(safeFilename)}.mp4"
+                 class="flex-1 text-center btn-primary text-xs font-bold rounded-lg py-2.5">
+                 <i class="fa-solid fa-video mr-1"></i> Video</a>
+              ${audioBtn}
+            </div>
           </div>
         </div>
       </div>`;
@@ -333,4 +350,4 @@ tiktokUrl.addEventListener('keydown', function(e){
 });
 </script>
 </body>
-      </html>
+</html>
