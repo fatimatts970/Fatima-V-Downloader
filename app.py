@@ -1,51 +1,49 @@
-from flask import Flask, request, jsonify, send_from_directory, send_file, after_this_request
+from flask import Flask, request, jsonify, send_from_directory, Response, stream_with_context
 import os
 import re
-import time
-import uuid
-import glob
-import yt_dlp
+import requests
 
 app = Flask(__name__)
 PORT = int(os.environ.get("PORT", 10000))
 HTML_DIR = os.getcwd()
-TMP_DIR = "/tmp"
 
 TIKTOK_URL_PATTERN = re.compile(r"(tiktok\.com|vm\.tiktok\.com|vt\.tiktok\.com)", re.IGNORECASE)
 
 BROWSER_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
-    "Referer": "https://www.tiktok.com/",
 }
 
-
-def cleanup_old_files():
-    now = time.time()
-    for f in glob.glob(os.path.join(TMP_DIR, "fatima_ttk_*")):
-        try:
-            if now - os.path.getmtime(f) > 600:
-                os.remove(f)
-        except Exception:
-            pass
+TIKWM_API = "https://www.tikwm.com/api/"
 
 
-def extract_tiktok_info(url):
-    ydl_opts = {
-        "quiet": True,
-        "no_warnings": True,
-        "skip_download": True,
-        "noplaylist": True,
-        "http_headers": BROWSER_HEADERS,
-        "extractor_args": {"tiktok": {"api_hostname": ["api22-normal-c-useast2a.tiktokv.com"]}},
-    }
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        info = ydl.extract_info(url, download=False)
+def fetch_tikwm_data(tiktok_url):
+    resp = requests.post(
+        TIKWM_API,
+        data={"url": tiktok_url, "hd": "1"},
+        headers=BROWSER_HEADERS,
+        timeout=20,
+    )
+    resp.raise_for_status()
+    payload = resp.json()
+
+    if payload.get("code") != 0 or not payload.get("data"):
+        raise ValueError(payload.get("msg") or "Video not found")
+
+    data = payload["data"]
+    base = "https://www.tikwm.com"
+
+    def full_url(path):
+        if not path:
+            return None
+        return path if path.startswith("http") else base + path
 
     return {
-        "title": info.get("title") or "tiktok_video",
-        "thumbnail": info.get("thumbnail"),
-        "duration": info.get("duration"),
-        "uploader": info.get("uploader") or info.get("uploader_id"),
+        "title": data.get("title") or "tiktok_video",
+        "thumbnail": full_url(data.get("cover")),
+        "duration": data.get("duration"),
+        "uploader": (data.get("author") or {}).get("unique_id"),
+        "video_url": full_url(data.get("hdplay") or data.get("play")),
+        "audio_url": full_url(data.get("music")),
     }
 
 
@@ -66,7 +64,9 @@ def fetch():
         return jsonify({"success": False, "error": "That doesn't look like a valid TikTok link."})
 
     try:
-        result = extract_tiktok_info(url)
+        result = fetch_tikwm_data(url)
+        if not result.get("video_url"):
+            return jsonify({"success": False, "error": "Could not find a downloadable video for this link."})
         return jsonify({"success": True, **result})
     except Exception:
         return jsonify({"success": False, "error": "Could not process this link. Double check it and try again."})
@@ -74,53 +74,27 @@ def fetch():
 
 @app.route("/api/download")
 def download():
-    cleanup_old_files()
-    url = (request.args.get("url") or "").strip()
+    src = (request.args.get("src") or "").strip()
     kind = request.args.get("type", "video")
+    filename = request.args.get("filename") or ("fatima_tiktok.mp4" if kind == "video" else "fatima_tiktok.mp3")
 
-    if not url or not TIKTOK_URL_PATTERN.search(url):
-        return jsonify({"success": False, "error": "Invalid or missing link."}), 400
-
-    uid = uuid.uuid4().hex
-    out_template = os.path.join(TMP_DIR, f"fatima_ttk_{uid}.%(ext)s")
-
-    ydl_opts = {
-        "quiet": True,
-        "no_warnings": True,
-        "noplaylist": True,
-        "http_headers": BROWSER_HEADERS,
-        "outtmpl": out_template,
-        "extractor_args": {"tiktok": {"api_hostname": ["api22-normal-c-useast2a.tiktokv.com"]}},
-    }
-
-    if kind == "audio":
-        ydl_opts["format"] = "bestaudio/best"
-    else:
-        ydl_opts["format"] = "best[ext=mp4]/best"
+    if not src:
+        return jsonify({"success": False, "error": "Missing source."}), 400
 
     try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(url, download=True)
-            filepath = ydl.prepare_filename(info)
-
-        if not os.path.exists(filepath) or os.path.getsize(filepath) == 0:
-            return jsonify({"success": False, "error": "Download failed, please try again."}), 500
-
-        title = re.sub(r"[^a-zA-Z0-9]+", "_", info.get("title") or "fatima_tiktok")[:60]
-        ext = filepath.rsplit(".", 1)[-1]
-        download_name = f"{title}.{ext}"
-
-        @after_this_request
-        def cleanup(response):
-            try:
-                os.remove(filepath)
-            except Exception:
-                pass
-            return response
-
-        return send_file(filepath, as_attachment=True, download_name=download_name)
+        upstream = requests.get(src, stream=True, headers=BROWSER_HEADERS, timeout=30)
+        upstream.raise_for_status()
     except Exception:
-        return jsonify({"success": False, "error": "Could not download this video. It may be private or unavailable."}), 500
+        return jsonify({"success": False, "error": "Could not download this file. Please try again."}), 502
+
+    def generate():
+        for chunk in upstream.iter_content(chunk_size=8192):
+            if chunk:
+                yield chunk
+
+    content_type = "audio/mpeg" if kind == "audio" else "video/mp4"
+    headers = {"Content-Disposition": f'attachment; filename="{filename}"'}
+    return Response(stream_with_context(generate()), content_type=content_type, headers=headers)
 
 
 @app.route("/about")
