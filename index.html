@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fatima TikTok Downloader - Save TikTok Videos Without Watermark</title>
+<meta name="description" content="Download TikTok videos without watermark in HD, free and fast. Paste a link and save the video or just the audio, no app install needed.">
+<meta name="keywords" content="tiktok downloader, tiktok video download, tiktok no watermark, save tiktok video, tiktok mp3, tiktok mp4 download">
+<meta property="og:title" content="Fatima TikTok Downloader">
+<meta property="og:description" content="Download TikTok videos without watermark in HD, free and fast.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fatima-tiktok.vercel.app/">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{
+    --deep:#050b2e;
+    --blue-900:#051c66;
+    --blue-700:#0b3ec9;
+    --blue-500:#1f6bff;
+    --cyan:#22d3ee;
+    --ink:#0b1220;
+    --paper:#f7f9fd;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    margin:0;
+  }
+  h1,h2,h3,.display{font-family:'Sora',sans-serif}
+
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(120% 90% at 15% -10%, rgba(34,211,238,0.25), transparent 55%),
+      radial-gradient(90% 70% at 100% 0%, rgba(31,107,255,0.35), transparent 60%),
+      linear-gradient(160deg, var(--deep) 0%, var(--blue-900) 45%, var(--blue-700) 100%);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    background:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.35) 0, transparent 60%),
+      radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.25) 0, transparent 60%),
+      radial-gradient(1.5px 1.5px at 40% 80%, rgba(34,211,238,.4) 0, transparent 60%),
+      radial-gradient(1.5px 1.5px at 85% 20%, rgba(34,211,238,.35) 0, transparent 60%);
+    animation: drift 18s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes drift{
+    0%{ transform: translate(0,0); }
+    100%{ transform: translate(-40px,-30px); }
+  }
+
+  .link-orb{
+    width:56px;height:56px;border-radius:16px;
+    background:linear-gradient(135deg, var(--cyan), var(--blue-500));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 0 0 rgba(34,211,238,.5);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(34,211,238,.45)}
+    70%{box-shadow:0 0 0 14px rgba(34,211,238,0)}
+    100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}
+  }
+
+  .paste-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    backdrop-filter:blur(14px);
+    border-radius:22px;
+  }
+  .paste-input{
+    background:rgba(5,11,46,0.35);
+    border:1px solid rgba(255,255,255,0.14);
+    color:#fff;
+  }
+  .paste-input::placeholder{ color:rgba(255,255,255,0.45); }
+  .paste-input:focus{ outline:none; border-color:var(--cyan); }
+
+  .btn-primary{
+    background:linear-gradient(135deg, var(--cyan), var(--blue-500));
+    color:var(--deep);
+    font-weight:700;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 8px 24px -8px rgba(34,211,238,.55);
+  }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 12px 28px -8px rgba(34,211,238,.7); }
+  .btn-primary:disabled{ opacity:.6; transform:none; cursor:not-allowed; }
+
+  .step-num{
+    font-family:'Sora',sans-serif;
+    font-size:13px;
+    letter-spacing:.14em;
+  }
+
+  .faq-content{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
+  .faq-item.active .faq-content{ max-height:260px; }
+  .faq-item.active .faq-icon{ transform:rotate(45deg); }
+  .faq-icon{ transition:transform .2s ease; }
+
+  .result-card{ animation: rise .35s ease both; }
+  @keyframes rise{ from{ opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+</style>
+</head>
+<body>
+
+<header class="max-w-3xl mx-auto flex items-center justify-between px-5 pt-6 pb-2">
+  <a href="/" class="flex items-center gap-2.5">
+    <div class="link-orb"><i class="fa-solid fa-link text-white text-lg"></i></div>
+    <div class="leading-tight">
+      <div class="display font-extrabold text-lg text-[var(--ink)]">Fatima<span style="color:var(--blue-500)">TikTok</span></div>
+      <div class="text-[10px] font-semibold tracking-widest text-slate-500 uppercase">Downloader</div>
+    </div>
+  </a>
+  <span class="text-[11px] font-semibold text-slate-500 bg-slate-100 rounded-full px-3 py-1.5 border border-slate-200">No App Needed</span>
+</header>
+
+<section class="hero">
+  <div class="relative max-w-3xl mx-auto px-5 pt-10 pb-16 md:pt-16 md:pb-20 text-center">
+    <h1 class="display text-white font-extrabold text-3xl md:text-5xl leading-tight">
+      Save any TikTok<br class="hidden md:block"> without the watermark
+    </h1>
+    <p class="text-white/70 mt-4 max-w-md mx-auto text-sm md:text-base">
+      Paste a TikTok link, get a clean HD video or just the sound. Free, no sign-up, works on any device.
+    </p>
+
+    <div class="paste-card mt-8 p-3 md:p-4 max-w-xl mx-auto">
+      <div class="flex flex-col md:flex-row gap-2.5">
+        <div class="relative flex-1">
+          <i class="fa-solid fa-link absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-sm"></i>
+          <input id="tiktokUrl" type="text" placeholder="Paste TikTok video link here..."
+            class="paste-input w-full rounded-xl pl-11 pr-4 py-3.5 text-sm">
+        </div>
+        <button id="fetchBtn" class="btn-primary rounded-xl px-6 py-3.5 text-sm flex items-center justify-center gap-2 whitespace-nowrap">
+          <i class="fa-solid fa-download"></i> Download
+        </button>
+      </div>
+      <p class="text-white/40 text-[11px] mt-3 text-left px-1">
+        By using this tool you agree to our <a href="/terms" class="underline hover:text-white/70">Terms &amp; Conditions</a>.
+      </p>
+    </div>
+
+    <div id="resultArea" class="max-w-xl mx-auto mt-5"></div>
+  </div>
+</section>
+
+<section class="max-w-3xl mx-auto px-5 py-14">
+  <h2 class="display font-extrabold text-2xl text-center mb-8">Three steps, no watermark</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
+      <span class="step-num text-[var(--blue-500)]">STEP 01</span>
+      <h3 class="font-bold text-base mt-2 mb-1.5">Copy the link</h3>
+      <p class="text-slate-500 text-xs leading-relaxed">Open TikTok, tap Share on the video you want, then Copy Link.</p>
+    </div>
+    <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
+      <span class="step-num text-[var(--blue-500)]">STEP 02</span>
+      <h3 class="font-bold text-base mt-2 mb-1.5">Paste it above</h3>
+      <p class="text-slate-500 text-xs leading-relaxed">Drop the link into the box and hit Download. We'll fetch it in seconds.</p>
+    </div>
+    <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
+      <span class="step-num text-[var(--blue-500)]">STEP 03</span>
+      <h3 class="font-bold text-base mt-2 mb-1.5">Save your file</h3>
+      <p class="text-slate-500 text-xs leading-relaxed">Choose video or audio only, then save it straight to your device.</p>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-3xl mx-auto px-5 pb-6">
+  <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-sm space-y-5 text-sm">
+    <div>
+      <h2 class="display font-extrabold text-xl mb-2">Why use Fatima TikTok Downloader</h2>
+      <p class="text-slate-600 leading-relaxed text-[13px]">
+        TikTok videos play great in the app, but sharing them elsewhere usually means a watermark stamped across the frame. Fatima TikTok Downloader pulls the original clip straight from the source, so what you save is exactly what was posted, clean and full resolution, ready to keep, repost, or edit.
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-base mb-1.5">Video or just the sound</h3>
+      <p class="text-slate-600 leading-relaxed text-[13px]">
+        Some links are only worth saving for the audio, a sound bite, a voiceover, a song someone remixed. This tool separates the two, so you're not stuck downloading a full video just to grab a clip of audio.
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-base mb-1.5">Works anywhere</h3>
+      <p class="text-slate-600 leading-relaxed text-[13px]">
+        No app to install, no account to create. It runs in the browser on a phone, tablet, or computer, and the download starts directly on your device.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-3xl mx-auto px-5 pb-16">
+  <h2 class="display font-extrabold text-xl mb-4">Frequently asked questions</h2>
+  <div class="space-y-2">
+    <div class="faq-item bg-white border border-slate-200 rounded-xl p-4 cursor-pointer" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between font-semibold text-sm">
+        <span>Is this free to use?</span>
+        <i class="fa-solid fa-plus faq-icon text-[var(--blue-500)]"></i>
+      </div>
+      <div class="faq-content text-slate-500 text-xs mt-2 leading-relaxed">
+        Yes. There's no cost, no account, and no hidden limit on how many videos you save.
+      </div>
+    </div>
+    <div class="faq-item bg-white border border-slate-200 rounded-xl p-4 cursor-pointer" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between font-semibold text-sm">
+        <span>Does it remove the watermark?</span>
+        <i class="fa-solid fa-plus faq-icon text-[var(--blue-500)]"></i>
+      </div>
+      <div class="faq-content text-slate-500 text-xs mt-2 leading-relaxed">
+        Yes, the video is pulled from the original source file, so it saves without the TikTok logo watermark.
+      </div>
+    </div>
+    <div class="faq-item bg-white border border-slate-200 rounded-xl p-4 cursor-pointer" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between font-semibold text-sm">
+        <span>Can I download only the audio?</span>
+        <i class="fa-solid fa-plus faq-icon text-[var(--blue-500)]"></i>
+      </div>
+      <div class="faq-content text-slate-500 text-xs mt-2 leading-relaxed">
+        Yes. Once a link is fetched, you'll see a separate button to save just the sound.
+      </div>
+    </div>
+    <div class="faq-item bg-white border border-slate-200 rounded-xl p-4 cursor-pointer" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between font-semibold text-sm">
+        <span>Whose videos can I download?</span>
+        <i class="fa-solid fa-plus faq-icon text-[var(--blue-500)]"></i>
+      </div>
+      <div class="faq-content text-slate-500 text-xs mt-2 leading-relaxed">
+        Only download and reuse videos you own or have permission to use. Respect the original creator's rights when sharing saved content elsewhere.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-slate-200 py-8">
+  <div class="max-w-3xl mx-auto px-5 text-center text-xs text-slate-500 space-x-3">
+    <a href="/about" class="hover:text-[var(--blue-500)] transition-colors">About Us</a>
+    <span>•</span>
+    <a href="/privacy" class="hover:text-[var(--blue-500)] transition-colors">Privacy Policy</a>
+    <span>•</span>
+    <a href="/terms" class="hover:text-[var(--blue-500)] transition-colors">Terms &amp; Conditions</a>
+    <span>•</span>
+    <a href="/contact" class="hover:text-[var(--blue-500)] transition-colors">Contact Us</a>
+    <p class="text-[10px] text-slate-400 mt-4">&copy; 2026 Fatima TikTok Downloader. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(el){
+  const isActive = el.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+  if(!isActive) el.classList.add('active');
+}
+
+const fetchBtn = document.getElementById('fetchBtn');
+const tiktokUrl = document.getElementById('tiktokUrl');
+const resultArea = document.getElementById('resultArea');
+
+function escapeHtml(str){
+  const d = document.createElement('div');
+  d.innerText = str;
+  return d.innerHTML;
+}
+
+fetchBtn.onclick = async function(){
+  const url = tiktokUrl.value.trim();
+  if(!url){
+    resultArea.innerHTML = `<div class="result-card bg-red-500/15 border border-red-300/30 text-white text-sm rounded-xl p-4">Please paste a TikTok link first.</div>`;
+    return;
+  }
+
+  fetchBtn.disabled = true;
+  fetchBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Fetching...`;
+  resultArea.innerHTML = '';
+
+  try{
+    const res = await fetch('/api/fetch', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({url})
+    });
+    const data = await res.json();
+
+    if(!data.success){
+      resultArea.innerHTML = `<div class="result-card bg-red-500/15 border border-red-300/30 text-white text-sm rounded-xl p-4">${escapeHtml(data.error || 'Something went wrong.')}</div>`;
+      return;
+    }
+
+    const title = escapeHtml(data.title || 'tiktok_video');
+    const safeFilename = title.replace(/[^a-z0-9]+/gi, '_').slice(0, 60) || 'fatima_tiktok';
+
+    let thumbHtml = data.thumbnail
+      ? `<img src="${data.thumbnail}" class="w-16 h-24 object-cover rounded-lg" alt="thumbnail">`
+      : `<div class="w-16 h-24 rounded-lg bg-white/10 flex items-center justify-center"><i class="fa-solid fa-video text-white/40"></i></div>`;
+
+    let audioBtn = data.audio_url
+      ? `<a href="/api/download?src=${encodeURIComponent(data.audio_url)}&type=audio&filename=${encodeURIComponent(safeFilename)}.mp3"
+           class="flex-1 text-center bg-white/10 border border-white/20 text-white text-xs font-semibold rounded-lg py-2.5 hover:bg-white/20 transition">
+           <i class="fa-solid fa-music mr-1"></i> Audio</a>`
+      : '';
+
+    resultArea.innerHTML = `
+      <div class="result-card paste-card p-4 text-left flex gap-3">
+        ${thumbHtml}
+        <div class="flex-1 min-w-0">
+          <p class="text-white text-xs font-semibold line-clamp-2">${title}</p>
+          <p class="text-white/40 text-[11px] mt-0.5">${data.uploader ? '@' + escapeHtml(data.uploader) : ''}</p>
+          <div class="flex gap-2 mt-3">
+            <a href="/api/download?src=${encodeURIComponent(data.video_url)}&type=video&filename=${encodeURIComponent(safeFilename)}.mp4"
+               class="flex-1 text-center btn-primary text-xs font-bold rounded-lg py-2.5">
+               <i class="fa-solid fa-video mr-1"></i> Video</a>
+            ${audioBtn}
+          </div>
+        </div>
+      </div>`;
+  }catch(err){
+    resultArea.innerHTML = `<div class="result-card bg-red-500/15 border border-red-300/30 text-white text-sm rounded-xl p-4">Connection error. Please try again.</div>`;
+  }finally{
+    fetchBtn.disabled = false;
+    fetchBtn.innerHTML = `<i class="fa-solid fa-download"></i> Download`;
+  }
+};
+
+tiktokUrl.addEventListener('keydown', function(e){
+  if(e.key === 'Enter') fetchBtn.click();
+});
+</script>
+</body>
+      </html>
