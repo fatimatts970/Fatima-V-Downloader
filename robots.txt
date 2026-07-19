@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fatima-tiktok.vercel.app/sitemap.xml
