@@ -3,6 +3,8 @@ import os
 import re
 import requests
 
+import random
+
 app = Flask(__name__)
 PORT = int(os.environ.get("PORT", 10000))
 HTML_DIR = os.getcwd()
@@ -72,11 +74,16 @@ def fetch():
         return jsonify({"success": False, "error": "Could not process this link. Double check it and try again."})
 
 
+def random_filename(ext):
+    n = lambda: random.randint(10000000000, 99999999999)
+    return f"TikTokVideoDownloader-{n()}{n()}.{ext}"
+
+
 @app.route("/api/download")
 def download():
     src = (request.args.get("src") or "").strip()
     kind = request.args.get("type", "video")
-    filename = request.args.get("filename") or ("fatima_tiktok.mp4" if kind == "video" else "fatima_tiktok.mp3")
+    filename = random_filename("mp3" if kind == "audio" else "mp4")
 
     if not src:
         return jsonify({"success": False, "error": "Missing source."}), 400
