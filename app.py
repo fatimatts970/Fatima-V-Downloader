@@ -36,6 +36,7 @@ def extract_tiktok_info(url):
         "skip_download": True,
         "noplaylist": True,
         "http_headers": BROWSER_HEADERS,
+        "extractor_args": {"tiktok": {"api_hostname": ["api22-normal-c-useast2a.tiktokv.com"]}},
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=False)
@@ -89,6 +90,7 @@ def download():
         "noplaylist": True,
         "http_headers": BROWSER_HEADERS,
         "outtmpl": out_template,
+        "extractor_args": {"tiktok": {"api_hostname": ["api22-normal-c-useast2a.tiktokv.com"]}},
     }
 
     if kind == "audio":
