@@ -308,11 +308,8 @@ fetchBtn.onclick = async function(){
       ? `<img src="${data.thumbnail}" class="w-20 h-28 object-cover rounded-xl shrink-0" alt="thumbnail">`
       : `<div class="w-20 h-28 rounded-xl bg-white/10 flex items-center justify-center shrink-0"><i class="fa-solid fa-video text-white/40 text-lg"></i></div>`;
 
-    let audioBtn = data.audio_url
-      ? `<a href="/api/download?src=${encodeURIComponent(data.audio_url)}&type=audio&filename=${encodeURIComponent(safeFilename)}.mp3"
-           class="flex-1 text-center bg-white/10 border border-white/20 text-white text-xs font-semibold rounded-lg py-2.5 hover:bg-white/20 transition">
-           <i class="fa-solid fa-music mr-1"></i> Audio</a>`
-      : '';
+    const videoDlUrl = `/api/download?url=${encodeURIComponent(url)}&type=video`;
+    const audioDlUrl = `/api/download?url=${encodeURIComponent(url)}&type=audio`;
 
     resultArea.innerHTML = `
       <div class="result-card paste-card p-4 text-left">
@@ -329,10 +326,12 @@ fetchBtn.onclick = async function(){
             <p class="text-white text-sm font-bold leading-snug line-clamp-3">${title}</p>
             ${data.uploader ? `<p class="text-[var(--cyan)] text-xs font-medium mt-1.5"><i class="fa-solid fa-user text-[10px] mr-1"></i>@${escapeHtml(data.uploader)}</p>` : ''}
             <div class="flex gap-2 mt-auto pt-3">
-              <a href="/api/download?src=${encodeURIComponent(data.video_url)}&type=video&filename=${encodeURIComponent(safeFilename)}.mp4"
+              <a href="${videoDlUrl}"
                  class="flex-1 text-center btn-primary text-xs font-bold rounded-lg py-2.5">
                  <i class="fa-solid fa-video mr-1"></i> Video</a>
-              ${audioBtn}
+              <a href="${audioDlUrl}"
+                 class="flex-1 text-center bg-white/10 border border-white/20 text-white text-xs font-semibold rounded-lg py-2.5 hover:bg-white/20 transition">
+                 <i class="fa-solid fa-music mr-1"></i> Audio</a>
             </div>
           </div>
         </div>
