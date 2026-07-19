@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fatima-tiktok.vercel.app/sitemap.xml
+Sitemap: https://fatima-v-downloader.vercel.app/sitemap.xml
