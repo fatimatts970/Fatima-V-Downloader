@@ -326,16 +326,53 @@ fetchBtn.onclick = async function(){
             <p class="text-white text-sm font-bold leading-snug line-clamp-3">${title}</p>
             ${data.uploader ? `<p class="text-[var(--cyan)] text-xs font-medium mt-1.5"><i class="fa-solid fa-user text-[10px] mr-1"></i>@${escapeHtml(data.uploader)}</p>` : ''}
             <div class="flex gap-2 mt-auto pt-3">
-              <a href="${videoDlUrl}"
-                 class="flex-1 text-center btn-primary text-xs font-bold rounded-lg py-2.5">
-                 <i class="fa-solid fa-video mr-1"></i> Video</a>
-              <a href="${audioDlUrl}"
-                 class="flex-1 text-center bg-white/10 border border-white/20 text-white text-xs font-semibold rounded-lg py-2.5 hover:bg-white/20 transition">
-                 <i class="fa-solid fa-music mr-1"></i> Audio</a>
+              <button type="button" data-dl="${videoDlUrl}"
+                 class="dl-trigger flex-1 text-center btn-primary text-xs font-bold rounded-lg py-2.5">
+                 <i class="fa-solid fa-video mr-1"></i> Video</button>
+              <button type="button" data-dl="${audioDlUrl}"
+                 class="dl-trigger flex-1 text-center bg-white/10 border border-white/20 text-white text-xs font-semibold rounded-lg py-2.5 hover:bg-white/20 transition">
+                 <i class="fa-solid fa-music mr-1"></i> Audio</button>
             </div>
+            <div class="dl-status text-[11px] mt-2"></div>
           </div>
         </div>
       </div>`;
+
+    resultArea.querySelectorAll('.dl-trigger').forEach(btn => {
+      btn.addEventListener('click', async function(){
+        const statusEl = resultArea.querySelector('.dl-status');
+        const originalHtml = this.innerHTML;
+        this.disabled = true;
+        this.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i>`;
+        statusEl.innerHTML = '';
+        try {
+          const dlUrl = this.getAttribute('data-dl');
+          const r = await fetch(dlUrl);
+          if (!r.ok) {
+            const errData = await r.json().catch(() => ({}));
+            statusEl.innerHTML = `<span class="text-red-300">${escapeHtml(errData.error || 'Download failed. Please try again in a moment.')}</span>`;
+            return;
+          }
+          const blob = await r.blob();
+          const disposition = r.headers.get('Content-Disposition') || '';
+          const match = disposition.match(/filename="?([^"]+)"?/);
+          const filename = match ? match[1] : 'fatima_tiktok_video.mp4';
+          const blobUrl = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = blobUrl;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(blobUrl);
+        } catch (err) {
+          statusEl.innerHTML = `<span class="text-red-300">Connection error. Please try again.</span>`;
+        } finally {
+          this.disabled = false;
+          this.innerHTML = originalHtml;
+        }
+      });
+    });
   }catch(err){
     resultArea.innerHTML = `<div class="result-card bg-red-500/15 border border-red-300/30 text-white text-sm rounded-xl p-4">Connection error. Please try again.</div>`;
   }finally{
