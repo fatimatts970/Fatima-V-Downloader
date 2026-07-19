@@ -11,12 +11,19 @@ HTML_DIR = os.getcwd()
 TIKTOK_URL_PATTERN = re.compile(r"(tiktok\.com|vm\.tiktok\.com|vt\.tiktok\.com)", re.IGNORECASE)
 
 
+CDN_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+    "Referer": "https://www.tiktok.com/",
+}
+
+
 def extract_tiktok_info(url):
     ydl_opts = {
         "quiet": True,
         "no_warnings": True,
         "skip_download": True,
         "noplaylist": True,
+        "http_headers": CDN_HEADERS,
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=False)
@@ -84,7 +91,8 @@ def proxy_download():
         filename = filename.rsplit(".", 1)[0] + ".mp4"
 
     def generate():
-        with requests.get(src, stream=True, timeout=30) as r:
+        with requests.get(src, stream=True, timeout=30, headers=CDN_HEADERS) as r:
+            r.raise_for_status()
             for chunk in r.iter_content(chunk_size=8192):
                 if chunk:
                     yield chunk
