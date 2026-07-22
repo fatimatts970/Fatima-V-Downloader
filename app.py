@@ -10,7 +10,7 @@ HTML_DIR = os.getcwd()
 
 TIKTOK_URL_PATTERN = re.compile(r"(tiktok\.com|vm\.tiktok\.com|vt\.tiktok\.com)", re.IGNORECASE)
 TIKWM_API = "https://www.tikwm.com/api/"
-ALLOWED_SRC_HOSTS = ("tikwm.com", "www.tikwm.com")
+ALLOWED_SRC_HOSTS = ("tikwm.com", "tiktokcdn.com", "tiktokcdn-us.com", "tiktokv.com", "muscdn.com")
 
 BROWSER_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
@@ -53,8 +53,16 @@ def fetch():
         return jsonify({"success": False, "error": "Could not process this link. It may be private or unavailable."})
 
     d = result["data"]
-    video_url = d.get("hdplay") or d.get("play")
-    audio_url = d.get("music")
+
+    def full_url(u):
+        if not u:
+            return None
+        if u.startswith("http://") or u.startswith("https://"):
+            return u
+        return "https://www.tikwm.com" + (u if u.startswith("/") else "/" + u)
+
+    video_url = full_url(d.get("hdplay") or d.get("play"))
+    audio_url = full_url(d.get("music"))
 
     if not video_url:
         return jsonify({"success": False, "error": "Could not find a downloadable video for this link."})
