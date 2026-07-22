@@ -1,989 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="GHxm4TNzr32uGtqyxQ0aN1vhOVZRin3Bl0xplPpdHg0" />
-    <meta name="google-adsense-account" content="ca-pub-2027963473930635">
-    <title>Fatima TTS Studio - Free Online Text to Speech Converter | Premium Multilingual Voices</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <meta name="description" content="Convert text to natural, human-like speech for free with Fatima TTS Studio. Choose from a huge range of premium voices across dozens of languages including Urdu, Hindi, English, Arabic, Spanish, French, and many more. Instant preview, download as MP3.">
-    <meta name="keywords" content="text to speech, TTS, Fatima TTS, free text to speech, Urdu text to speech, online voice generator, AI voice, text to voice converter, MP3 voice generator, natural voice AI">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fatima TikTok Downloader - Save TikTok Videos Without Watermark</title>
+<meta name="description" content="Download TikTok videos without watermark in HD, free and fast. Paste a link and save the video or just the audio, no app install needed.">
+<meta name="keywords" content="tiktok downloader, tiktok video download, tiktok no watermark, save tiktok video, tiktok mp3, tiktok mp4 download">
+<meta property="og:title" content="Fatima TikTok Downloader">
+<meta property="og:description" content="Download TikTok videos without watermark in HD, free and fast.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fatima-v-downloader.vercel.app/">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{
+    --deep:#050b2e;
+    --blue-900:#051c66;
+    --blue-700:#0b3ec9;
+    --blue-500:#1f6bff;
+    --cyan:#22d3ee;
+    --ink:#0b1220;
+    --paper:#f7f9fd;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    margin:0;
+  }
+  h1,h2,h3,.display{font-family:'Sora',sans-serif}
 
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Fatima TTS Studio - Free Online Text to Speech Converter">
-    <meta property="og:description" content="Convert text to natural, human-like speech for free with a huge range of premium global voices across dozens of languages. Instant preview and MP3 download.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fatima-tts.vercel.app/">
-    <meta property="og:image" content="https://fatima-tts.vercel.app/og-image.png">
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(120% 90% at 15% -10%, rgba(34,211,238,0.25), transparent 55%),
+      radial-gradient(90% 70% at 100% 0%, rgba(31,107,255,0.35), transparent 60%),
+      linear-gradient(160deg, var(--deep) 0%, var(--blue-900) 45%, var(--blue-700) 100%);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    background:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.35) 0, transparent 60%),
+      radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.25) 0, transparent 60%),
+      radial-gradient(1.5px 1.5px at 40% 80%, rgba(34,211,238,.4) 0, transparent 60%),
+      radial-gradient(1.5px 1.5px at 85% 20%, rgba(34,211,238,.35) 0, transparent 60%);
+    animation: drift 18s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes drift{
+    0%{ transform: translate(0,0); }
+    100%{ transform: translate(-40px,-30px); }
+  }
 
-    <!-- Tailwind CSS & Google Fonts -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(180deg, #155dfc 0%, #0a46c8 100%);
-            min-height: 100vh;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
-        }
-        .voice-card {
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.08);
-        }
-        .voice-card:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-        .voice-card.selected {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: #ffffff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-        }
-        /* Seek Slider Box Layout */
-        input[type="range"] {
-            -webkit-appearance: none;
-            appearance: none;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            height: 6px;
-            outline: none;
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: #ffffff;
-            cursor: pointer;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-        }
-        /* FAQ Dropdown transitions */
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .faq-item.active .faq-content {
-            max-height: 200px;
-        }
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-    </style>
+  .link-orb{
+    width:56px;height:56px;border-radius:16px;
+    background:linear-gradient(135deg, var(--cyan), var(--blue-500));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 0 0 rgba(34,211,238,.5);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(34,211,238,.45)}
+    70%{box-shadow:0 0 0 14px rgba(34,211,238,0)}
+    100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}
+  }
+
+  .paste-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    backdrop-filter:blur(14px);
+    border-radius:22px;
+  }
+  .paste-input{
+    background:rgba(5,11,46,0.35);
+    border:1px solid rgba(255,255,255,0.14);
+    color:#fff;
+  }
+  .paste-input::placeholder{ color:rgba(255,255,255,0.45); }
+  .paste-input:focus{ outline:none; border-color:var(--cyan); }
+
+  .btn-primary{
+    background:linear-gradient(135deg, var(--cyan), var(--blue-500));
+    color:var(--deep);
+    font-weight:700;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 8px 24px -8px rgba(34,211,238,.55);
+  }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 12px 28px -8px rgba(34,211,238,.7); }
+  .btn-primary:disabled{ opacity:.6; transform:none; cursor:not-allowed; }
+
+  .step-num{
+    font-family:'Sora',sans-serif;
+    font-size:13px;
+    letter-spacing:.14em;
+  }
+
+  .faq-content{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
+  .faq-item.active .faq-content{ max-height:260px; }
+  .faq-item.active .faq-icon{ transform:rotate(45deg); }
+  .faq-icon{ transition:transform .2s ease; }
+
+  .result-card{ animation: rise .35s ease both; }
+  @keyframes rise{ from{ opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+</style>
 </head>
-<body class="text-white flex flex-col items-center p-4 md:p-8">
+<body>
 
-    <!-- Top Navigation Header Brand Bar (Corner Logo Style Like TikSav) -->
-    <header class="w-full max-w-lg flex items-center justify-between mb-8 px-2 relative z-10">
-        <a href="/" class="flex items-center space-x-2 group">
-            <div class="w-9 h-9 rounded-xl bg-white flex items-center justify-center shadow-md shadow-black/10 transition-transform group-hover:scale-105">
-                <i class="fa-solid fa-microphone-lines text-[#155dfc] text-lg"></i>
-            </div>
-            <div class="flex flex-col">
-                <span class="text-lg font-black tracking-tight text-white leading-none">Fatima<span class="text-blue-200">TTS</span></span>
-                <span class="text-[9px] font-bold tracking-widest text-white/70 uppercase">Studio</span>
-            </div>
-        </a>
-        <div class="flex items-center bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs">
-            <i class="fa-solid fa-globe mr-1.5 text-white/80"></i>
-            <span class="font-medium">EN / UR</span>
+<header class="max-w-3xl mx-auto flex items-center justify-between px-5 pt-6 pb-2">
+  <a href="/" class="flex items-center gap-2.5">
+    <div class="link-orb"><i class="fa-solid fa-link text-white text-lg"></i></div>
+    <div class="leading-tight">
+      <div class="display font-extrabold text-lg text-[var(--ink)]">Fatima<span style="color:var(--blue-500)">TikTok</span></div>
+      <div class="text-[10px] font-semibold tracking-widest text-slate-500 uppercase">Downloader</div>
+    </div>
+  </a>
+  <span class="text-[11px] font-semibold text-slate-500 bg-slate-100 rounded-full px-3 py-1.5 border border-slate-200">No App Needed</span>
+</header>
+
+<section class="hero">
+  <div class="relative max-w-3xl mx-auto px-5 pt-10 pb-16 md:pt-16 md:pb-20 text-center">
+    <h1 class="display text-white font-extrabold text-3xl md:text-5xl leading-tight">
+      Save any TikTok<br class="hidden md:block"> without the watermark
+    </h1>
+    <p class="text-white/70 mt-4 max-w-md mx-auto text-sm md:text-base">
+      Paste a TikTok link, get a clean HD video or just the sound. Free, no sign-up, works on any device.
+    </p>
+
+    <div class="paste-card mt-8 p-3 md:p-4 max-w-xl mx-auto">
+      <div class="flex flex-col md:flex-row gap-2.5">
+        <div class="relative flex-1">
+          <i class="fa-solid fa-link absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-sm"></i>
+          <input id="tiktokUrl" type="text" placeholder="Paste TikTok video link here..." autocomplete="off"
+            class="paste-input w-full rounded-xl pl-11 pr-4 py-3.5 text-sm">
         </div>
-    </header>
-
-    <!-- Main Studio Dashboard Container Box -->
-    <div class="w-full max-w-lg glass-card p-6 md:p-8 relative overflow-hidden mb-8">
-        <!-- Main Headline View -->
-        <div class="text-center mb-6 relative z-10 w-full overflow-hidden">
-            <h1 class="text-lg md:text-xl font-bold tracking-tight text-white block w-full truncate">
-                Fatima Text To Speech Studio
-            </h1>
-            <p class="text-xs text-white/80 font-medium tracking-wide mt-2">
-                <i class="fa-solid fa-bolt mr-1 text-yellow-300 animate-pulse"></i> Premium Global Voices Active Now!
-            </p>
-        </div>
-
-        <!-- Text Area Box with Characters Counter Integration & Accurate Alignment Fix -->
-        <div class="mb-6 relative z-10">
-            <div class="relative">
-                <textarea id="scriptText" placeholder="Enter your text script here..." maxlength="100000"
-                    class="w-full h-32 px-4 py-3 pt-4 bg-black/20 border border-white/20 rounded-xl focus:outline-none focus:border-white text-white placeholder-white/50 resize-none transition duration-300 text-left" dir="ltr"></textarea>
-                <!-- Character Counter Placement Option -->
-                <div id="charCounterBox" class="absolute bottom-2.5 left-3.5 bg-black/40 px-2 py-0.5 rounded-md text-[10px] tracking-wide font-mono text-white/80 border border-white/10">
-                    <span id="charCount">0</span> / 100000 Characters
-                </div>
-            </div>
-        </div>
-
-        <!-- Tabs Framework -->
-        <div class="flex space-x-2 bg-black/20 p-1 rounded-xl mb-4 relative z-10">
-            <button id="allVoicesTab" class="flex-1 py-2 text-sm font-medium rounded-lg bg-white text-[#155dfc] shadow-md font-bold">
-                <i class="fa-solid fa-microphone-lines mr-1.5"></i> All Voices
-            </button>
-            <button id="favoritesTab" class="flex-1 py-2 text-sm font-medium rounded-lg text-white hover:bg-white/10 transition font-semibold">
-                <i class="fa-solid fa-star mr-1.5 text-yellow-300"></i> Favorites
-            </button>
-        </div>
-
-        <!-- Search Input Pipeline Bar -->
-        <div class="mb-4 relative z-10">
-            <input type="text" id="searchVoices" placeholder="Search language or voice..." 
-                class="w-full px-4 py-2 bg-black/20 border border-white/20 rounded-xl focus:outline-none focus:border-white text-sm text-white placeholder-white/40 transition duration-300">
-        </div>
-
-        <!-- Voices List Container View -->
-        <div class="h-64 overflow-y-auto space-y-2 mb-6 pr-1 relative z-10" id="voicesContainer">
-            <!-- Dynamically loaded cards -->
-        </div>
-
-        <!-- Action Button Control Panel (Generate & Stop) -->
-        <div class="flex space-x-3 mb-6 relative z-10">
-            <button id="generateBtn" class="flex-2 w-3/4 py-4 bg-white hover:bg-white/90 text-[#155dfc] font-bold rounded-xl shadow-lg shadow-black/10 transition duration-300 flex items-center justify-center">
-                <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>
-                <span>Generate Voice</span>
-            </button>
-            <button id="stopBtn" class="flex-1 w-1/4 py-4 bg-red-600/30 hover:bg-red-600/50 border border-white/20 text-white font-semibold rounded-xl transition duration-300 flex items-center justify-center">
-                Stop
-            </button>
-        </div>
-
-        <!-- Custom Luxury Audio Player UI Component -->
-        <div id="audioPlayerContainer" class="p-4 bg-black/20 rounded-2xl border border-white/20 hidden relative z-10 shadow-inner">
-            <div class="flex items-center space-x-4">
-                <!-- Play/Pause Button -->
-                <button id="customPlayPauseBtn" class="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#155dfc] shadow-md transition duration-200 hover:scale-105">
-                    <i class="fa-solid fa-play text-lg"></i>
-                </button>
-                
-                <!-- Progress & Tracker Slider -->
-                <div class="flex-1 flex flex-col justify-center">
-                    <div class="flex items-center justify-between mb-1">
-                        <span class="text-xs text-white/70 font-semibold tracking-wider uppercase">Voice Output</span>
-                        <span id="playerTime" class="text-xs text-white/80 font-medium">0:00 / 0:00</span>
-                    </div>
-                    <input type="range" id="playerSeeker" value="0" min="0" max="100" class="w-full">
-                </div>
-
-                <!-- Action Button Download Element -->
-                <button id="downloadBtn" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition duration-200 shadow-md">
-                    <i class="fa-solid fa-download text-base"></i>
-                </button>
-            </div>
-        </div>
+        <button id="fetchBtn" class="btn-primary rounded-xl px-6 py-3.5 text-sm flex items-center justify-center gap-2 whitespace-nowrap">
+          <i class="fa-solid fa-download"></i> Download
+        </button>
+      </div>
+      <p class="text-white/40 text-[11px] mt-3 text-left px-1">
+        By using this tool you agree to our <a href="/terms" class="underline hover:text-white/70">Terms &amp; Conditions</a>.
+      </p>
     </div>
 
-    <!-- ================= TOP CLASS SEO ARTICLE CONTENT AREA ================= -->
-    <div class="w-full max-w-lg bg-white text-slate-800 rounded-3xl p-6 md:p-8 shadow-xl space-y-6 text-sm mb-8">
-        <section class="border-b border-slate-100 pb-4">
-            <h2 class="text-xl font-bold text-slate-900 mb-2">How to Use Fatima Text To Speech Studio</h2>
-            <p class="text-slate-600 mb-4">Convert text documents into ultra-realistic premium global media voice tracks in three easy steps.</p>
-            
-            <div class="space-y-4">
-                <div class="flex items-start gap-3">
-                    <div class="w-6 h-6 rounded-full bg-[#155dfc] text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</div>
-                    <div>
-                        <h4 class="font-bold text-slate-900">Write or Paste Text Script</h4>
-                        <p class="text-slate-500 text-xs">Input your text draft inside the natural script console configured above.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-3">
-                    <div class="w-6 h-6 rounded-full bg-[#155dfc] text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</div>
-                    <div>
-                        <h4 class="font-bold text-slate-900">Select Global Voice Model</h4>
-                        <p class="text-slate-500 text-xs">Filter through the active list of multi-language premium neural characters.</p>
-                    </div>
-                </div>
-                <div class="flex items-start gap-3">
-                    <div class="w-6 h-6 rounded-full bg-[#155dfc] text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</div>
-                    <div>
-                        <h4 class="font-bold text-slate-900">Generate & Save High-Quality Audio</h4>
-                        <p class="text-slate-500 text-xs">Click the primary generation buttons to play outputs instantly or download secure files.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div id="resultArea" class="max-w-xl mx-auto mt-5"></div>
+  </div>
+</section>
 
-        <section class="space-y-3">
-            <h3 class="text-lg font-bold text-slate-900">Why Choose Fatima TTS Studio?</h3>
-            <p class="text-slate-600 leading-relaxed text-xs">
-                Unlike common synthetic engines that produce mechanical voice dropouts, Fatima Text to Speech Studio leverages modern linguistic rendering models to serve realistic narration profiles. Perfect for professional content creation channels, text accessibility tasks, digital marketing scripts, and language localization tracks. The application is highly optimized to run smoothly on thin clients and browser engines without local hardware requirements.
-            </p>
-        </section>
-
-        <!-- ================= TOP CLASS DYNAMIC ACCORDION FAQS SECTION ================= -->
-        <section class="border-t border-slate-100 pt-5">
-            <h3 class="text-lg font-bold text-slate-900 mb-4">Frequently Asked Questions (FAQs)</h3>
-            <div class="space-y-2">
-                <div class="faq-item border border-slate-200 rounded-xl p-3.5 cursor-pointer transition-colors hover:bg-slate-50" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between font-semibold text-slate-900 text-xs">
-                        <span>Is Fatima TTS Studio free to use?</span>
-                        <i class="fa-solid fa-plus faq-icon transition-transform duration-200 text-[#155dfc]"></i>
-                    </div>
-                    <div class="faq-content text-slate-500 text-[11px] mt-2 leading-relaxed">
-                        Yes, our conversion interface functions entirely free without hidden subscription pipelines, premium account caps, or forced credential sign-up conditions.
-                    </div>
-                </div>
-
-                <div class="faq-item border border-slate-200 rounded-xl p-3.5 cursor-pointer transition-colors hover:bg-slate-50" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between font-semibold text-slate-900 text-xs">
-                        <span>Does the tool support both Android and iOS devices?</span>
-                        <i class="fa-solid fa-plus faq-icon transition-transform duration-200 text-[#155dfc]"></i>
-                    </div>
-                    <div class="faq-content text-slate-500 text-[11px] mt-2 leading-relaxed">
-                        Yes, the clean architecture is responsive and fully compatible across Chrome, Safari, Firefox, and Samsung Internet environments without additional plugin packages.
-                    </div>
-                </div>
-
-                <div class="faq-item border border-slate-200 rounded-xl p-3.5 cursor-pointer transition-colors hover:bg-slate-50" onclick="toggleFaq(this)">
-                    <div class="flex items-center justify-between font-semibold text-slate-900 text-xs">
-                        <span>What is the file download format?</span>
-                        <i class="fa-solid fa-plus faq-icon transition-transform duration-200 text-[#155dfc]"></i>
-                    </div>
-                    <div class="faq-content text-slate-500 text-[11px] mt-2 leading-relaxed">
-                        All successfully processed natural language inputs are compiled down into fully standard high-bitrate MP3 structures to guarantee playback support everywhere.
-                    </div>
-                </div>
-            </div>
-        </section>
+<section class="max-w-3xl mx-auto px-5 py-14">
+  <h2 class="display font-extrabold text-2xl text-center mb-8">Three steps, no watermark</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
+      <span class="step-num text-[var(--blue-500)]">STEP 01</span>
+      <h3 class="font-bold text-base mt-2 mb-1.5">Copy the link</h3>
+      <p class="text-slate-500 text-xs leading-relaxed">Open TikTok, tap Share on the video you want, then Copy Link.</p>
     </div>
+    <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
+      <span class="step-num text-[var(--blue-500)]">STEP 02</span>
+      <h3 class="font-bold text-base mt-2 mb-1.5">Paste it above</h3>
+      <p class="text-slate-500 text-xs leading-relaxed">Drop the link into the box and hit Download. We'll fetch it in seconds.</p>
+    </div>
+    <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
+      <span class="step-num text-[var(--blue-500)]">STEP 03</span>
+      <h3 class="font-bold text-base mt-2 mb-1.5">Save your file</h3>
+      <p class="text-slate-500 text-xs leading-relaxed">Choose video or audio only, then save it straight to your device.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- ================= PREMIUM ADSENES COMPLIANT FOOTER ================= -->
-    <footer class="w-full max-w-lg text-center py-6 border-t border-white/20 text-xs text-white/60 space-x-3 relative z-10">
-        <!-- 10000% Working Redirection Targets mapped to genuine New Browser Tabs Natively -->
-        <a href="/about" target="_blank" class="hover:text-white transition-colors">About Us</a>
-        <span>•</span>
-        <a href="/privacy" target="_blank" class="hover:text-white transition-colors">Privacy Policy</a>
-        <span>•</span>
-        <a href="/terms" target="_blank" class="hover:text-white transition-colors">Terms & Conditions</a>
-        <span>•</span>
-        <a href="/contact" target="_blank" class="hover:text-white transition-colors">Contact Us</a>
-        
-        <p class="text-[10px] text-white/40 mt-4">&copy; 2026 Fatima TTS Studio. All rights reserved.</p>
-    </footer>
+<section class="max-w-3xl mx-auto px-5 pb-6">
+  <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-sm space-y-5 text-sm">
+    <div>
+      <h2 class="display font-extrabold text-xl mb-2">Why use Fatima TikTok Downloader</h2>
+      <p class="text-slate-600 leading-relaxed text-[13px]">
+        TikTok videos play great in the app, but sharing them elsewhere usually means a watermark stamped across the frame. Fatima TikTok Downloader pulls the original clip straight from the source, so what you save is exactly what was posted, clean and full resolution, ready to keep, repost, or edit.
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-base mb-1.5">Video or just the sound</h3>
+      <p class="text-slate-600 leading-relaxed text-[13px]">
+        Some links are only worth saving for the audio, a sound bite, a voiceover, a song someone remixed. This tool separates the two, so you're not stuck downloading a full video just to grab a clip of audio.
+      </p>
+    </div>
+    <div>
+      <h3 class="font-bold text-base mb-1.5">Works anywhere</h3>
+      <p class="text-slate-600 leading-relaxed text-[13px]">
+        No app to install, no account to create. It runs in the browser on a phone, tablet, or computer, and the download starts directly on your device.
+      </p>
+    </div>
+  </div>
+</section>
 
-    <!-- Hidden Background Audio Players -->
-    <audio id="audioPlayer" style="display: none;"></audio>
-    <audio id="silentPreviewPlayer" style="display: none;"></audio>
+<section class="max-w-3xl mx-auto px-5 pb-16">
+  <h2 class="display font-extrabold text-xl mb-4">Frequently asked questions</h2>
+  <div class="space-y-2">
+    <div class="faq-item bg-white border border-slate-200 rounded-xl p-4 cursor-pointer" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between font-semibold text-sm">
+        <span>Is this free to use?</span>
+        <i class="fa-solid fa-plus faq-icon text-[var(--blue-500)]"></i>
+      </div>
+      <div class="faq-content text-slate-500 text-xs mt-2 leading-relaxed">
+        Yes. There's no cost, no account, and no hidden limit on how many videos you save.
+      </div>
+    </div>
+    <div class="faq-item bg-white border border-slate-200 rounded-xl p-4 cursor-pointer" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between font-semibold text-sm">
+        <span>Does it remove the watermark?</span>
+        <i class="fa-solid fa-plus faq-icon text-[var(--blue-500)]"></i>
+      </div>
+      <div class="faq-content text-slate-500 text-xs mt-2 leading-relaxed">
+        Yes, the video is pulled from the original source file, so it saves without the TikTok logo watermark.
+      </div>
+    </div>
+    <div class="faq-item bg-white border border-slate-200 rounded-xl p-4 cursor-pointer" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between font-semibold text-sm">
+        <span>Can I download only the audio?</span>
+        <i class="fa-solid fa-plus faq-icon text-[var(--blue-500)]"></i>
+      </div>
+      <div class="faq-content text-slate-500 text-xs mt-2 leading-relaxed">
+        Yes. Once a link is fetched, you'll see a separate button to save just the sound.
+      </div>
+    </div>
+    <div class="faq-item bg-white border border-slate-200 rounded-xl p-4 cursor-pointer" onclick="toggleFaq(this)">
+      <div class="flex items-center justify-between font-semibold text-sm">
+        <span>Whose videos can I download?</span>
+        <i class="fa-solid fa-plus faq-icon text-[var(--blue-500)]"></i>
+      </div>
+      <div class="faq-content text-slate-500 text-xs mt-2 leading-relaxed">
+        Only download and reuse videos you own or have permission to use. Respect the original creator's rights when sharing saved content elsewhere.
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Script Section -->
-    <script>
-        const voices = [
-            { id: "__section__English", name: "English Voices", lang: "section", isSection: true },
-            { id: "en-AU-NatashaNeural", name: "English (Australia) - Natasha [Female]", lang: "en" },
-            { id: "en-AU-WilliamMultilingualNeural", name: "English (Australia) - William (Multilingual) [Male]", lang: "en" },
-            { id: "en-AU-WilliamNeural", name: "English (Australia) - William [Male]", lang: "en" },
-            { id: "en-CA-ClaraNeural", name: "English (Canada) - Clara [Female]", lang: "en" },
-            { id: "en-CA-LiamNeural", name: "English (Canada) - Liam [Male]", lang: "en" },
-            { id: "en-HK-SamNeural", name: "English (Hong Kong) - Sam [Male]", lang: "en" },
-            { id: "en-HK-YanNeural", name: "English (Hong Kong) - Yan [Female]", lang: "en" },
-            { id: "en-IN-NeerjaExpressiveNeural", name: "English (India) - Neerja (Expressive) [Female]", lang: "en" },
-            { id: "en-IN-NeerjaNeural", name: "English (India) - Neerja [Female]", lang: "en" },
-            { id: "en-IN-PrabhatNeural", name: "English (India) - Prabhat [Male]", lang: "en" },
-            { id: "en-IE-ConnorNeural", name: "English (Ireland) - Connor [Male]", lang: "en" },
-            { id: "en-IE-EmilyNeural", name: "English (Ireland) - Emily [Female]", lang: "en" },
-            { id: "en-KE-AsiliaNeural", name: "English (Kenya) - Asilia [Female]", lang: "en" },
-            { id: "en-KE-ChilembaNeural", name: "English (Kenya) - Chilemba [Male]", lang: "en" },
-            { id: "en-NZ-MitchellNeural", name: "English (New Zealand) - Mitchell [Male]", lang: "en" },
-            { id: "en-NZ-MollyNeural", name: "English (New Zealand) - Molly [Female]", lang: "en" },
-            { id: "en-NG-AbeoNeural", name: "English (Nigeria) - Abeo [Male]", lang: "en" },
-            { id: "en-NG-EzinneNeural", name: "English (Nigeria) - Ezinne [Female]", lang: "en" },
-            { id: "en-PH-JamesNeural", name: "English (Philippines) - James [Male]", lang: "en" },
-            { id: "en-PH-RosaNeural", name: "English (Philippines) - Rosa [Female]", lang: "en" },
-            { id: "en-SG-LunaNeural", name: "English (Singapore) - Luna [Female]", lang: "en" },
-            { id: "en-SG-WayneNeural", name: "English (Singapore) - Wayne [Male]", lang: "en" },
-            { id: "en-ZA-LeahNeural", name: "English (South Africa) - Leah [Female]", lang: "en" },
-            { id: "en-ZA-LukeNeural", name: "English (South Africa) - Luke [Male]", lang: "en" },
-            { id: "en-TZ-ElimuNeural", name: "English (Tanzania) - Elimu [Male]", lang: "en" },
-            { id: "en-TZ-ImaniNeural", name: "English (Tanzania) - Imani [Female]", lang: "en" },
-            { id: "en-GB-LibbyNeural", name: "English (UK) - Libby [Female]", lang: "en" },
-            { id: "en-GB-MaisieNeural", name: "English (UK) - Maisie [Female]", lang: "en" },
-            { id: "en-GB-RyanNeural", name: "English (UK) - Ryan [Male]", lang: "en" },
-            { id: "en-GB-SoniaNeural", name: "English (UK) - Sonia [Female]", lang: "en" },
-            { id: "en-GB-ThomasNeural", name: "English (UK) - Thomas [Male]", lang: "en" },
-            { id: "en-US-AndrewMultilingualNeural", name: "English (US) - Andrew (Multilingual) [Male]", lang: "en" },
-            { id: "en-US-AndrewNeural", name: "English (US) - Andrew [Male]", lang: "en" },
-            { id: "en-US-AriaNeural", name: "English (US) - Aria [Female]", lang: "en" },
-            { id: "en-US-AvaMultilingualNeural", name: "English (US) - Ava (Multilingual) [Female]", lang: "en" },
-            { id: "en-US-AvaNeural", name: "English (US) - Ava [Female]", lang: "en" },
-            { id: "en-US-BrianMultilingualNeural", name: "English (US) - Brian (Multilingual) [Male]", lang: "en" },
-            { id: "en-US-BrianNeural", name: "English (US) - Brian [Male]", lang: "en" },
-            { id: "en-US-ChristopherNeural", name: "English (US) - Christopher [Male]", lang: "en" },
-            { id: "en-US-EmmaMultilingualNeural", name: "English (US) - Emma (Multilingual) [Female]", lang: "en" },
-            { id: "en-US-EmmaNeural", name: "English (US) - Emma [Female]", lang: "en" },
-            { id: "en-US-EricNeural", name: "English (US) - Eric [Male]", lang: "en" },
-            { id: "en-US-GuyNeural", name: "English (US) - Guy [Male]", lang: "en" },
-            { id: "en-US-JennyNeural", name: "English (US) - Jenny [Female]", lang: "en" },
-            { id: "en-US-MichelleNeural", name: "English (US) - Michelle [Female]", lang: "en" },
-            { id: "en-US-RogerNeural", name: "English (US) - Roger [Male]", lang: "en" },
-            { id: "en-US-SteffanNeural", name: "English (US) - Steffan [Male]", lang: "en" },
-            { id: "__section__European", name: "European Voices", lang: "section", isSection: true },
-            { id: "sq-AL-AnilaNeural", name: "Albanian (Albania) - Anila [Female]", lang: "sq" },
-            { id: "sq-AL-IlirNeural", name: "Albanian (Albania) - Ilir [Male]", lang: "sq" },
-            { id: "bs-BA-GoranNeural", name: "Bosnian (Bosnia) - Goran [Male]", lang: "bs" },
-            { id: "bs-BA-VesnaNeural", name: "Bosnian (Bosnia) - Vesna [Female]", lang: "bs" },
-            { id: "bg-BG-BorislavNeural", name: "Bulgarian (Bulgaria) - Borislav [Male]", lang: "bg" },
-            { id: "bg-BG-KalinaNeural", name: "Bulgarian (Bulgaria) - Kalina [Female]", lang: "bg" },
-            { id: "ca-ES-EnricNeural", name: "Catalan (Spain) - Enric [Male]", lang: "ca" },
-            { id: "ca-ES-JoanaNeural", name: "Catalan (Spain) - Joana [Female]", lang: "ca" },
-            { id: "hr-HR-GabrijelaNeural", name: "Croatian (Croatia) - Gabrijela [Female]", lang: "hr" },
-            { id: "hr-HR-SreckoNeural", name: "Croatian (Croatia) - Srecko [Male]", lang: "hr" },
-            { id: "cs-CZ-AntoninNeural", name: "Czech (Czechia) - Antonin [Male]", lang: "cs" },
-            { id: "cs-CZ-VlastaNeural", name: "Czech (Czechia) - Vlasta [Female]", lang: "cs" },
-            { id: "da-DK-ChristelNeural", name: "Danish (Denmark) - Christel [Female]", lang: "da" },
-            { id: "da-DK-JeppeNeural", name: "Danish (Denmark) - Jeppe [Male]", lang: "da" },
-            { id: "nl-BE-ArnaudNeural", name: "Dutch (Belgium) - Arnaud [Male]", lang: "nl" },
-            { id: "nl-BE-DenaNeural", name: "Dutch (Belgium) - Dena [Female]", lang: "nl" },
-            { id: "nl-NL-ColetteNeural", name: "Dutch (Netherlands) - Colette [Female]", lang: "nl" },
-            { id: "nl-NL-FennaNeural", name: "Dutch (Netherlands) - Fenna [Female]", lang: "nl" },
-            { id: "nl-NL-MaartenNeural", name: "Dutch (Netherlands) - Maarten [Male]", lang: "nl" },
-            { id: "et-EE-AnuNeural", name: "Estonian (Estonia) - Anu [Female]", lang: "et" },
-            { id: "et-EE-KertNeural", name: "Estonian (Estonia) - Kert [Male]", lang: "et" },
-            { id: "fi-FI-HarriNeural", name: "Finnish (Finland) - Harri [Male]", lang: "fi" },
-            { id: "fi-FI-NooraNeural", name: "Finnish (Finland) - Noora [Female]", lang: "fi" },
-            { id: "fr-BE-CharlineNeural", name: "French (Belgium) - Charline [Female]", lang: "fr" },
-            { id: "fr-BE-GerardNeural", name: "French (Belgium) - Gerard [Male]", lang: "fr" },
-            { id: "fr-CA-AntoineNeural", name: "French (Canada) - Antoine [Male]", lang: "fr" },
-            { id: "fr-CA-JeanNeural", name: "French (Canada) - Jean [Male]", lang: "fr" },
-            { id: "fr-CA-SylvieNeural", name: "French (Canada) - Sylvie [Female]", lang: "fr" },
-            { id: "fr-CA-ThierryNeural", name: "French (Canada) - Thierry [Male]", lang: "fr" },
-            { id: "fr-FR-DeniseNeural", name: "French (France) - Denise [Female]", lang: "fr" },
-            { id: "fr-FR-EloiseNeural", name: "French (France) - Eloise [Female]", lang: "fr" },
-            { id: "fr-FR-HenriNeural", name: "French (France) - Henri [Male]", lang: "fr" },
-            { id: "fr-FR-RemyMultilingualNeural", name: "French (France) - Remy (Multilingual) [Male]", lang: "fr" },
-            { id: "fr-FR-VivienneMultilingualNeural", name: "French (France) - Vivienne (Multilingual) [Female]", lang: "fr" },
-            { id: "fr-CH-ArianeNeural", name: "French (Switzerland) - Ariane [Female]", lang: "fr" },
-            { id: "fr-CH-FabriceNeural", name: "French (Switzerland) - Fabrice [Male]", lang: "fr" },
-            { id: "gl-ES-RoiNeural", name: "Galician (Spain) - Roi [Male]", lang: "gl" },
-            { id: "gl-ES-SabelaNeural", name: "Galician (Spain) - Sabela [Female]", lang: "gl" },
-            { id: "de-AT-IngridNeural", name: "German (Austria) - Ingrid [Female]", lang: "de" },
-            { id: "de-AT-JonasNeural", name: "German (Austria) - Jonas [Male]", lang: "de" },
-            { id: "de-DE-AmalaNeural", name: "German (Germany) - Amala [Female]", lang: "de" },
-            { id: "de-DE-ConradNeural", name: "German (Germany) - Conrad [Male]", lang: "de" },
-            { id: "de-DE-FlorianMultilingualNeural", name: "German (Germany) - Florian (Multilingual) [Male]", lang: "de" },
-            { id: "de-DE-KatjaNeural", name: "German (Germany) - Katja [Female]", lang: "de" },
-            { id: "de-DE-KillianNeural", name: "German (Germany) - Killian [Male]", lang: "de" },
-            { id: "de-DE-SeraphinaMultilingualNeural", name: "German (Germany) - Seraphina (Multilingual) [Female]", lang: "de" },
-            { id: "de-CH-JanNeural", name: "German (Switzerland) - Jan [Male]", lang: "de" },
-            { id: "de-CH-LeniNeural", name: "German (Switzerland) - Leni [Female]", lang: "de" },
-            { id: "el-GR-AthinaNeural", name: "Greek (Greece) - Athina [Female]", lang: "el" },
-            { id: "el-GR-NestorasNeural", name: "Greek (Greece) - Nestoras [Male]", lang: "el" },
-            { id: "hu-HU-NoemiNeural", name: "Hungarian (Hungary) - Noemi [Female]", lang: "hu" },
-            { id: "hu-HU-TamasNeural", name: "Hungarian (Hungary) - Tamas [Male]", lang: "hu" },
-            { id: "is-IS-GudrunNeural", name: "Icelandic (Iceland) - Gudrun [Female]", lang: "is" },
-            { id: "is-IS-GunnarNeural", name: "Icelandic (Iceland) - Gunnar [Male]", lang: "is" },
-            { id: "ga-IE-ColmNeural", name: "Irish (Ireland) - Colm [Male]", lang: "ga" },
-            { id: "ga-IE-OrlaNeural", name: "Irish (Ireland) - Orla [Female]", lang: "ga" },
-            { id: "it-IT-DiegoNeural", name: "Italian (Italy) - Diego [Male]", lang: "it" },
-            { id: "it-IT-ElsaNeural", name: "Italian (Italy) - Elsa [Female]", lang: "it" },
-            { id: "it-IT-GiuseppeMultilingualNeural", name: "Italian (Italy) - Giuseppe (Multilingual) [Male]", lang: "it" },
-            { id: "it-IT-IsabellaNeural", name: "Italian (Italy) - Isabella [Female]", lang: "it" },
-            { id: "lv-LV-EveritaNeural", name: "Latvian (Latvia) - Everita [Female]", lang: "lv" },
-            { id: "lv-LV-NilsNeural", name: "Latvian (Latvia) - Nils [Male]", lang: "lv" },
-            { id: "lt-LT-LeonasNeural", name: "Lithuanian (Lithuania) - Leonas [Male]", lang: "lt" },
-            { id: "lt-LT-OnaNeural", name: "Lithuanian (Lithuania) - Ona [Female]", lang: "lt" },
-            { id: "mk-MK-AleksandarNeural", name: "Macedonian (Macedonia) - Aleksandar [Male]", lang: "mk" },
-            { id: "mk-MK-MarijaNeural", name: "Macedonian (Macedonia) - Marija [Female]", lang: "mk" },
-            { id: "mt-MT-GraceNeural", name: "Maltese (Malta) - Grace [Female]", lang: "mt" },
-            { id: "mt-MT-JosephNeural", name: "Maltese (Malta) - Joseph [Male]", lang: "mt" },
-            { id: "nb-NO-FinnNeural", name: "Norwegian (Norway) - Finn [Male]", lang: "nb" },
-            { id: "nb-NO-PernilleNeural", name: "Norwegian (Norway) - Pernille [Female]", lang: "nb" },
-            { id: "pl-PL-MarekNeural", name: "Polish (Poland) - Marek [Male]", lang: "pl" },
-            { id: "pl-PL-ZofiaNeural", name: "Polish (Poland) - Zofia [Female]", lang: "pl" },
-            { id: "pt-PT-DuarteNeural", name: "Portuguese (Portugal) - Duarte [Male]", lang: "pt" },
-            { id: "pt-PT-RaquelNeural", name: "Portuguese (Portugal) - Raquel [Female]", lang: "pt" },
-            { id: "ro-RO-AlinaNeural", name: "Romanian (Romania) - Alina [Female]", lang: "ro" },
-            { id: "ro-RO-EmilNeural", name: "Romanian (Romania) - Emil [Male]", lang: "ro" },
-            { id: "ru-RU-DmitryNeural", name: "Russian (Russia) - Dmitry [Male]", lang: "ru" },
-            { id: "ru-RU-SvetlanaNeural", name: "Russian (Russia) - Svetlana [Female]", lang: "ru" },
-            { id: "sr-RS-NicholasNeural", name: "Serbian (Serbia) - Nicholas [Male]", lang: "sr" },
-            { id: "sr-RS-SophieNeural", name: "Serbian (Serbia) - Sophie [Female]", lang: "sr" },
-            { id: "sk-SK-LukasNeural", name: "Slovak (Slovakia) - Lukas [Male]", lang: "sk" },
-            { id: "sk-SK-ViktoriaNeural", name: "Slovak (Slovakia) - Viktoria [Female]", lang: "sk" },
-            { id: "sl-SI-PetraNeural", name: "Slovenian (Slovenia) - Petra [Female]", lang: "sl" },
-            { id: "sl-SI-RokNeural", name: "Slovenian (Slovenia) - Rok [Male]", lang: "sl" },
-            { id: "es-ES-AlvaroNeural", name: "Spanish (Spain) - Alvaro [Male]", lang: "es" },
-            { id: "es-ES-ElviraNeural", name: "Spanish (Spain) - Elvira [Female]", lang: "es" },
-            { id: "es-ES-XimenaNeural", name: "Spanish (Spain) - Ximena [Female]", lang: "es" },
-            { id: "sv-SE-MattiasNeural", name: "Swedish (SE) - Mattias [Male]", lang: "sv" },
-            { id: "sv-SE-SofieNeural", name: "Swedish (SE) - Sofie [Female]", lang: "sv" },
-            { id: "uk-UA-OstapNeural", name: "Ukrainian (Ukraine) - Ostap [Male]", lang: "uk" },
-            { id: "uk-UA-PolinaNeural", name: "Ukrainian (Ukraine) - Polina [Female]", lang: "uk" },
-            { id: "cy-GB-AledNeural", name: "Welsh (UK) - Aled [Male]", lang: "cy" },
-            { id: "cy-GB-NiaNeural", name: "Welsh (UK) - Nia [Female]", lang: "cy" },
-            { id: "__section__Asian", name: "Asian Voices", lang: "section", isSection: true },
-            { id: "bn-BD-NabanitaNeural", name: "Bengali (Bangladesh) - Nabanita [Female]", lang: "bn" },
-            { id: "bn-BD-PradeepNeural", name: "Bengali (Bangladesh) - Pradeep [Male]", lang: "bn" },
-            { id: "bn-IN-BashkarNeural", name: "Bengali (India) - Bashkar [Male]", lang: "bn" },
-            { id: "bn-IN-TanishaaNeural", name: "Bengali (India) - Tanishaa [Female]", lang: "bn" },
-            { id: "my-MM-NilarNeural", name: "Burmese (Myanmar) - Nilar [Female]", lang: "my" },
-            { id: "my-MM-ThihaNeural", name: "Burmese (Myanmar) - Thiha [Male]", lang: "my" },
-            { id: "zh-CN-XiaoxiaoNeural", name: "Chinese (China) - Xiaoxiao [Female]", lang: "zh" },
-            { id: "zh-CN-XiaoyiNeural", name: "Chinese (China) - Xiaoyi [Female]", lang: "zh" },
-            { id: "zh-CN-YunjianNeural", name: "Chinese (China) - Yunjian [Male]", lang: "zh" },
-            { id: "zh-CN-YunxiNeural", name: "Chinese (China) - Yunxi [Male]", lang: "zh" },
-            { id: "zh-CN-YunxiaNeural", name: "Chinese (China) - Yunxia [Male]", lang: "zh" },
-            { id: "zh-CN-YunyangNeural", name: "Chinese (China) - Yunyang [Male]", lang: "zh" },
-            { id: "zh-CN-liaoning-XiaobeiNeural", name: "Chinese (China, Liaoning dialect) - Xiaobei [Female]", lang: "zh" },
-            { id: "zh-CN-shaanxi-XiaoniNeural", name: "Chinese (China, Shaanxi dialect) - Xiaoni [Female]", lang: "zh" },
-            { id: "zh-HK-HiuGaaiNeural", name: "Chinese (Hong Kong) - HiuGaai [Female]", lang: "zh" },
-            { id: "zh-HK-HiuMaanNeural", name: "Chinese (Hong Kong) - HiuMaan [Female]", lang: "zh" },
-            { id: "zh-HK-WanLungNeural", name: "Chinese (Hong Kong) - WanLung [Male]", lang: "zh" },
-            { id: "zh-TW-HsiaoChenNeural", name: "Chinese (Taiwan) - HsiaoChen [Female]", lang: "zh" },
-            { id: "zh-TW-HsiaoYuNeural", name: "Chinese (Taiwan) - HsiaoYu [Female]", lang: "zh" },
-            { id: "zh-TW-YunJheNeural", name: "Chinese (Taiwan) - YunJhe [Male]", lang: "zh" },
-            { id: "fil-PH-AngeloNeural", name: "Filipino (Philippines) - Angelo [Male]", lang: "fil" },
-            { id: "fil-PH-BlessicaNeural", name: "Filipino (Philippines) - Blessica [Female]", lang: "fil" },
-            { id: "ka-GE-EkaNeural", name: "Georgian (Georgia) - Eka [Female]", lang: "ka" },
-            { id: "ka-GE-GiorgiNeural", name: "Georgian (Georgia) - Giorgi [Male]", lang: "ka" },
-            { id: "gu-IN-DhwaniNeural", name: "Gujarati (India) - Dhwani [Female]", lang: "gu" },
-            { id: "gu-IN-NiranjanNeural", name: "Gujarati (India) - Niranjan [Male]", lang: "gu" },
-            { id: "hi-IN-MadhurNeural", name: "Hindi (India) - Madhur [Male]", lang: "hi" },
-            { id: "hi-IN-SwaraNeural", name: "Hindi (India) - Swara [Female]", lang: "hi" },
-            { id: "id-ID-ArdiNeural", name: "Indonesian (Indonesia) - Ardi [Male]", lang: "id" },
-            { id: "id-ID-GadisNeural", name: "Indonesian (Indonesia) - Gadis [Female]", lang: "id" },
-            { id: "iu-Cans-CA-SiqiniqNeural", name: "Inuktitut (Canada (Cans)) - Siqiniq [Female]", lang: "iu" },
-            { id: "iu-Cans-CA-TaqqiqNeural", name: "Inuktitut (Canada (Cans)) - Taqqiq [Male]", lang: "iu" },
-            { id: "iu-Latn-CA-SiqiniqNeural", name: "Inuktitut (Canada (Latn)) - Siqiniq [Female]", lang: "iu" },
-            { id: "iu-Latn-CA-TaqqiqNeural", name: "Inuktitut (Canada (Latn)) - Taqqiq [Male]", lang: "iu" },
-            { id: "ja-JP-KeitaNeural", name: "Japanese (Japan) - Keita [Male]", lang: "ja" },
-            { id: "ja-JP-NanamiNeural", name: "Japanese (Japan) - Nanami [Female]", lang: "ja" },
-            { id: "jv-ID-DimasNeural", name: "Javanese (Indonesia) - Dimas [Male]", lang: "jv" },
-            { id: "jv-ID-SitiNeural", name: "Javanese (Indonesia) - Siti [Female]", lang: "jv" },
-            { id: "kn-IN-GaganNeural", name: "Kannada (India) - Gagan [Male]", lang: "kn" },
-            { id: "kn-IN-SapnaNeural", name: "Kannada (India) - Sapna [Female]", lang: "kn" },
-            { id: "kk-KZ-AigulNeural", name: "Kazakh (Kazakhstan) - Aigul [Female]", lang: "kk" },
-            { id: "kk-KZ-DauletNeural", name: "Kazakh (Kazakhstan) - Daulet [Male]", lang: "kk" },
-            { id: "km-KH-PisethNeural", name: "Khmer (Cambodia) - Piseth [Male]", lang: "km" },
-            { id: "km-KH-SreymomNeural", name: "Khmer (Cambodia) - Sreymom [Female]", lang: "km" },
-            { id: "ko-KR-HyunsuMultilingualNeural", name: "Korean (Korea) - Hyunsu (Multilingual) [Male]", lang: "ko" },
-            { id: "ko-KR-InJoonNeural", name: "Korean (Korea) - InJoon [Male]", lang: "ko" },
-            { id: "ko-KR-SunHiNeural", name: "Korean (Korea) - SunHi [Female]", lang: "ko" },
-            { id: "lo-LA-ChanthavongNeural", name: "Lao (Laos) - Chanthavong [Male]", lang: "lo" },
-            { id: "lo-LA-KeomanyNeural", name: "Lao (Laos) - Keomany [Female]", lang: "lo" },
-            { id: "ms-MY-OsmanNeural", name: "Malay (Malaysia) - Osman [Male]", lang: "ms" },
-            { id: "ms-MY-YasminNeural", name: "Malay (Malaysia) - Yasmin [Female]", lang: "ms" },
-            { id: "ml-IN-MidhunNeural", name: "Malayalam (India) - Midhun [Male]", lang: "ml" },
-            { id: "ml-IN-SobhanaNeural", name: "Malayalam (India) - Sobhana [Female]", lang: "ml" },
-            { id: "mr-IN-AarohiNeural", name: "Marathi (India) - Aarohi [Female]", lang: "mr" },
-            { id: "mr-IN-ManoharNeural", name: "Marathi (India) - Manohar [Male]", lang: "mr" },
-            { id: "mn-MN-BataaNeural", name: "Mongolian (Mongolia) - Bataa [Male]", lang: "mn" },
-            { id: "mn-MN-YesuiNeural", name: "Mongolian (Mongolia) - Yesui [Female]", lang: "mn" },
-            { id: "ne-NP-HemkalaNeural", name: "Nepali (Nepal) - Hemkala [Female]", lang: "ne" },
-            { id: "ne-NP-SagarNeural", name: "Nepali (Nepal) - Sagar [Male]", lang: "ne" },
-            { id: "si-LK-SameeraNeural", name: "Sinhala (Sri Lanka) - Sameera [Male]", lang: "si" },
-            { id: "si-LK-ThiliniNeural", name: "Sinhala (Sri Lanka) - Thilini [Female]", lang: "si" },
-            { id: "su-ID-JajangNeural", name: "Sundanese (Indonesia) - Jajang [Male]", lang: "su" },
-            { id: "su-ID-TutiNeural", name: "Sundanese (Indonesia) - Tuti [Female]", lang: "su" },
-            { id: "ta-IN-PallaviNeural", name: "Tamil (India) - Pallavi [Female]", lang: "ta" },
-            { id: "ta-IN-ValluvarNeural", name: "Tamil (India) - Valluvar [Male]", lang: "ta" },
-            { id: "ta-MY-KaniNeural", name: "Tamil (Malaysia) - Kani [Female]", lang: "ta" },
-            { id: "ta-MY-SuryaNeural", name: "Tamil (Malaysia) - Surya [Male]", lang: "ta" },
-            { id: "ta-SG-AnbuNeural", name: "Tamil (Singapore) - Anbu [Male]", lang: "ta" },
-            { id: "ta-SG-VenbaNeural", name: "Tamil (Singapore) - Venba [Female]", lang: "ta" },
-            { id: "ta-LK-KumarNeural", name: "Tamil (Sri Lanka) - Kumar [Male]", lang: "ta" },
-            { id: "ta-LK-SaranyaNeural", name: "Tamil (Sri Lanka) - Saranya [Female]", lang: "ta" },
-            { id: "te-IN-MohanNeural", name: "Telugu (India) - Mohan [Male]", lang: "te" },
-            { id: "te-IN-ShrutiNeural", name: "Telugu (India) - Shruti [Female]", lang: "te" },
-            { id: "th-TH-NiwatNeural", name: "Thai (Thailand) - Niwat [Male]", lang: "th" },
-            { id: "th-TH-PremwadeeNeural", name: "Thai (Thailand) - Premwadee [Female]", lang: "th" },
-            { id: "ur-IN-GulNeural", name: "Urdu (India) - Gul [Female]", lang: "ur" },
-            { id: "ur-IN-SalmanNeural", name: "Urdu (India) - Salman [Male]", lang: "ur" },
-            { id: "ur-PK-AsadNeural", name: "Urdu (Pakistan) - Asad [Male]", lang: "ur" },
-            { id: "ur-PK-UzmaNeural", name: "Urdu (Pakistan) - Uzma [Female]", lang: "ur" },
-            { id: "uz-UZ-MadinaNeural", name: "Uzbek (Uzbekistan) - Madina [Female]", lang: "uz" },
-            { id: "uz-UZ-SardorNeural", name: "Uzbek (Uzbekistan) - Sardor [Male]", lang: "uz" },
-            { id: "vi-VN-HoaiMyNeural", name: "Vietnamese (Vietnam) - HoaiMy [Female]", lang: "vi" },
-            { id: "vi-VN-NamMinhNeural", name: "Vietnamese (Vietnam) - NamMinh [Male]", lang: "vi" },
-            { id: "__section__Middle Eastern", name: "Middle Eastern Voices", lang: "section", isSection: true },
-            { id: "ar-DZ-AminaNeural", name: "Arabic (Algeria) - Amina [Female]", lang: "ar" },
-            { id: "ar-DZ-IsmaelNeural", name: "Arabic (Algeria) - Ismael [Male]", lang: "ar" },
-            { id: "ar-BH-AliNeural", name: "Arabic (Bahrain) - Ali [Male]", lang: "ar" },
-            { id: "ar-BH-LailaNeural", name: "Arabic (Bahrain) - Laila [Female]", lang: "ar" },
-            { id: "ar-EG-SalmaNeural", name: "Arabic (Egypt) - Salma [Female]", lang: "ar" },
-            { id: "ar-EG-ShakirNeural", name: "Arabic (Egypt) - Shakir [Male]", lang: "ar" },
-            { id: "ar-IQ-BasselNeural", name: "Arabic (Iraq) - Bassel [Male]", lang: "ar" },
-            { id: "ar-IQ-RanaNeural", name: "Arabic (Iraq) - Rana [Female]", lang: "ar" },
-            { id: "ar-JO-SanaNeural", name: "Arabic (Jordan) - Sana [Female]", lang: "ar" },
-            { id: "ar-JO-TaimNeural", name: "Arabic (Jordan) - Taim [Male]", lang: "ar" },
-            { id: "ar-KW-FahedNeural", name: "Arabic (Kuwait) - Fahed [Male]", lang: "ar" },
-            { id: "ar-KW-NouraNeural", name: "Arabic (Kuwait) - Noura [Female]", lang: "ar" },
-            { id: "ar-LB-LaylaNeural", name: "Arabic (Lebanon) - Layla [Female]", lang: "ar" },
-            { id: "ar-LB-RamiNeural", name: "Arabic (Lebanon) - Rami [Male]", lang: "ar" },
-            { id: "ar-LY-ImanNeural", name: "Arabic (Libya) - Iman [Female]", lang: "ar" },
-            { id: "ar-LY-OmarNeural", name: "Arabic (Libya) - Omar [Male]", lang: "ar" },
-            { id: "ar-MA-JamalNeural", name: "Arabic (Morocco) - Jamal [Male]", lang: "ar" },
-            { id: "ar-MA-MounaNeural", name: "Arabic (Morocco) - Mouna [Female]", lang: "ar" },
-            { id: "ar-OM-AbdullahNeural", name: "Arabic (Oman) - Abdullah [Male]", lang: "ar" },
-            { id: "ar-OM-AyshaNeural", name: "Arabic (Oman) - Aysha [Female]", lang: "ar" },
-            { id: "ar-QA-AmalNeural", name: "Arabic (Qatar) - Amal [Female]", lang: "ar" },
-            { id: "ar-QA-MoazNeural", name: "Arabic (Qatar) - Moaz [Male]", lang: "ar" },
-            { id: "ar-SA-HamedNeural", name: "Arabic (Saudi Arabia) - Hamed [Male]", lang: "ar" },
-            { id: "ar-SA-ZariyahNeural", name: "Arabic (Saudi Arabia) - Zariyah [Female]", lang: "ar" },
-            { id: "ar-SY-AmanyNeural", name: "Arabic (Syria) - Amany [Female]", lang: "ar" },
-            { id: "ar-SY-LaithNeural", name: "Arabic (Syria) - Laith [Male]", lang: "ar" },
-            { id: "ar-TN-HediNeural", name: "Arabic (Tunisia) - Hedi [Male]", lang: "ar" },
-            { id: "ar-TN-ReemNeural", name: "Arabic (Tunisia) - Reem [Female]", lang: "ar" },
-            { id: "ar-AE-FatimaNeural", name: "Arabic (UAE) - Fatima [Female]", lang: "ar" },
-            { id: "ar-AE-HamdanNeural", name: "Arabic (UAE) - Hamdan [Male]", lang: "ar" },
-            { id: "ar-YE-MaryamNeural", name: "Arabic (Yemen) - Maryam [Female]", lang: "ar" },
-            { id: "ar-YE-SalehNeural", name: "Arabic (Yemen) - Saleh [Male]", lang: "ar" },
-            { id: "az-AZ-BabekNeural", name: "Azerbaijani (Azerbaijan) - Babek [Male]", lang: "az" },
-            { id: "az-AZ-BanuNeural", name: "Azerbaijani (Azerbaijan) - Banu [Female]", lang: "az" },
-            { id: "he-IL-AvriNeural", name: "Hebrew (Israel) - Avri [Male]", lang: "he" },
-            { id: "he-IL-HilaNeural", name: "Hebrew (Israel) - Hila [Female]", lang: "he" },
-            { id: "ps-AF-GulNawazNeural", name: "Pashto (Afghanistan) - GulNawaz [Male]", lang: "ps" },
-            { id: "ps-AF-LatifaNeural", name: "Pashto (Afghanistan) - Latifa [Female]", lang: "ps" },
-            { id: "fa-IR-DilaraNeural", name: "Persian (Iran) - Dilara [Female]", lang: "fa" },
-            { id: "fa-IR-FaridNeural", name: "Persian (Iran) - Farid [Male]", lang: "fa" },
-            { id: "tr-TR-AhmetNeural", name: "Turkish (Turkey) - Ahmet [Male]", lang: "tr" },
-            { id: "tr-TR-EmelNeural", name: "Turkish (Turkey) - Emel [Female]", lang: "tr" },
-            { id: "__section__African", name: "African Voices", lang: "section", isSection: true },
-            { id: "af-ZA-AdriNeural", name: "Afrikaans (South Africa) - Adri [Female]", lang: "af" },
-            { id: "af-ZA-WillemNeural", name: "Afrikaans (South Africa) - Willem [Male]", lang: "af" },
-            { id: "am-ET-AmehaNeural", name: "Amharic (Ethiopia) - Ameha [Male]", lang: "am" },
-            { id: "am-ET-MekdesNeural", name: "Amharic (Ethiopia) - Mekdes [Female]", lang: "am" },
-            { id: "so-SO-MuuseNeural", name: "Somali (Somalia) - Muuse [Male]", lang: "so" },
-            { id: "so-SO-UbaxNeural", name: "Somali (Somalia) - Ubax [Female]", lang: "so" },
-            { id: "sw-KE-RafikiNeural", name: "Swahili (Kenya) - Rafiki [Male]", lang: "sw" },
-            { id: "sw-KE-ZuriNeural", name: "Swahili (Kenya) - Zuri [Female]", lang: "sw" },
-            { id: "sw-TZ-DaudiNeural", name: "Swahili (Tanzania) - Daudi [Male]", lang: "sw" },
-            { id: "sw-TZ-RehemaNeural", name: "Swahili (Tanzania) - Rehema [Female]", lang: "sw" },
-            { id: "zu-ZA-ThandoNeural", name: "Zulu (South Africa) - Thando [Female]", lang: "zu" },
-            { id: "zu-ZA-ThembaNeural", name: "Zulu (South Africa) - Themba [Male]", lang: "zu" },
-            { id: "__section__Latin American", name: "Latin American Voices", lang: "section", isSection: true },
-            { id: "pt-BR-AntonioNeural", name: "Portuguese (Brazil) - Antonio [Male]", lang: "pt" },
-            { id: "pt-BR-FranciscaNeural", name: "Portuguese (Brazil) - Francisca [Female]", lang: "pt" },
-            { id: "pt-BR-ThalitaMultilingualNeural", name: "Portuguese (Brazil) - Thalita (Multilingual) [Female]", lang: "pt" },
-            { id: "es-AR-ElenaNeural", name: "Spanish (Argentina) - Elena [Female]", lang: "es" },
-            { id: "es-AR-TomasNeural", name: "Spanish (Argentina) - Tomas [Male]", lang: "es" },
-            { id: "es-BO-MarceloNeural", name: "Spanish (Bolivia) - Marcelo [Male]", lang: "es" },
-            { id: "es-BO-SofiaNeural", name: "Spanish (Bolivia) - Sofia [Female]", lang: "es" },
-            { id: "es-CL-CatalinaNeural", name: "Spanish (Chile) - Catalina [Female]", lang: "es" },
-            { id: "es-CL-LorenzoNeural", name: "Spanish (Chile) - Lorenzo [Male]", lang: "es" },
-            { id: "es-CO-GonzaloNeural", name: "Spanish (Colombia) - Gonzalo [Male]", lang: "es" },
-            { id: "es-CO-SalomeNeural", name: "Spanish (Colombia) - Salome [Female]", lang: "es" },
-            { id: "es-CR-JuanNeural", name: "Spanish (Costa Rica) - Juan [Male]", lang: "es" },
-            { id: "es-CR-MariaNeural", name: "Spanish (Costa Rica) - Maria [Female]", lang: "es" },
-            { id: "es-CU-BelkysNeural", name: "Spanish (Cuba) - Belkys [Female]", lang: "es" },
-            { id: "es-CU-ManuelNeural", name: "Spanish (Cuba) - Manuel [Male]", lang: "es" },
-            { id: "es-DO-EmilioNeural", name: "Spanish (Dominican Rep.) - Emilio [Male]", lang: "es" },
-            { id: "es-DO-RamonaNeural", name: "Spanish (Dominican Rep.) - Ramona [Female]", lang: "es" },
-            { id: "es-EC-AndreaNeural", name: "Spanish (Ecuador) - Andrea [Female]", lang: "es" },
-            { id: "es-EC-LuisNeural", name: "Spanish (Ecuador) - Luis [Male]", lang: "es" },
-            { id: "es-SV-LorenaNeural", name: "Spanish (El Salvador) - Lorena [Female]", lang: "es" },
-            { id: "es-SV-RodrigoNeural", name: "Spanish (El Salvador) - Rodrigo [Male]", lang: "es" },
-            { id: "es-GQ-JavierNeural", name: "Spanish (Eq. Guinea) - Javier [Male]", lang: "es" },
-            { id: "es-GQ-TeresaNeural", name: "Spanish (Eq. Guinea) - Teresa [Female]", lang: "es" },
-            { id: "es-GT-AndresNeural", name: "Spanish (Guatemala) - Andres [Male]", lang: "es" },
-            { id: "es-GT-MartaNeural", name: "Spanish (Guatemala) - Marta [Female]", lang: "es" },
-            { id: "es-HN-CarlosNeural", name: "Spanish (Honduras) - Carlos [Male]", lang: "es" },
-            { id: "es-HN-KarlaNeural", name: "Spanish (Honduras) - Karla [Female]", lang: "es" },
-            { id: "es-MX-DaliaNeural", name: "Spanish (Mexico) - Dalia [Female]", lang: "es" },
-            { id: "es-MX-JorgeNeural", name: "Spanish (Mexico) - Jorge [Male]", lang: "es" },
-            { id: "es-NI-FedericoNeural", name: "Spanish (Nicaragua) - Federico [Male]", lang: "es" },
-            { id: "es-NI-YolandaNeural", name: "Spanish (Nicaragua) - Yolanda [Female]", lang: "es" },
-            { id: "es-PA-MargaritaNeural", name: "Spanish (Panama) - Margarita [Female]", lang: "es" },
-            { id: "es-PA-RobertoNeural", name: "Spanish (Panama) - Roberto [Male]", lang: "es" },
-            { id: "es-PY-MarioNeural", name: "Spanish (Paraguay) - Mario [Male]", lang: "es" },
-            { id: "es-PY-TaniaNeural", name: "Spanish (Paraguay) - Tania [Female]", lang: "es" },
-            { id: "es-PE-AlexNeural", name: "Spanish (Peru) - Alex [Male]", lang: "es" },
-            { id: "es-PE-CamilaNeural", name: "Spanish (Peru) - Camila [Female]", lang: "es" },
-            { id: "es-PR-KarinaNeural", name: "Spanish (Puerto Rico) - Karina [Female]", lang: "es" },
-            { id: "es-PR-VictorNeural", name: "Spanish (Puerto Rico) - Victor [Male]", lang: "es" },
-            { id: "es-US-AlonsoNeural", name: "Spanish (US) - Alonso [Male]", lang: "es" },
-            { id: "es-US-PalomaNeural", name: "Spanish (US) - Paloma [Female]", lang: "es" },
-            { id: "es-UY-MateoNeural", name: "Spanish (Uruguay) - Mateo [Male]", lang: "es" },
-            { id: "es-UY-ValentinaNeural", name: "Spanish (Uruguay) - Valentina [Female]", lang: "es" },
-            { id: "es-VE-PaolaNeural", name: "Spanish (Venezuela) - Paola [Female]", lang: "es" },
-            { id: "es-VE-SebastianNeural", name: "Spanish (Venezuela) - Sebastian [Male]", lang: "es" }
-        ];
+<footer class="border-t border-slate-200 py-8">
+  <div class="max-w-3xl mx-auto px-5 text-center text-xs text-slate-500 space-x-3">
+    <a href="/about" class="hover:text-[var(--blue-500)] transition-colors">About Us</a>
+    <span>•</span>
+    <a href="/privacy" class="hover:text-[var(--blue-500)] transition-colors">Privacy Policy</a>
+    <span>•</span>
+    <a href="/terms" class="hover:text-[var(--blue-500)] transition-colors">Terms &amp; Conditions</a>
+    <span>•</span>
+    <a href="/contact" class="hover:text-[var(--blue-500)] transition-colors">Contact Us</a>
+    <p class="text-[10px] text-slate-400 mt-4">&copy; 2026 Fatima TikTok Downloader. All rights reserved.</p>
+  </div>
+</footer>
 
-        let selectedVoice = "ur-PK-UzmaNeural";
-        let favorites = JSON.parse(localStorage.getItem('tts_favorites')) || [];
-        let currentlyPlayingVoiceId = null;
-        let generatedFileName = "";
+<script>
+function toggleFaq(el){
+  const isActive = el.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+  if(!isActive) el.classList.add('active');
+}
 
-        const voicesContainer = document.getElementById('voicesContainer');
-        const generateBtn = document.getElementById('generateBtn');
-        const scriptText = document.getElementById('scriptText');
-        const charCount = document.getElementById('charCount');
-        const searchInput = document.getElementById('searchVoices');
-        const audioPlayerContainer = document.getElementById('audioPlayerContainer');
-        const audioPlayer = document.getElementById('audioPlayer');
-        const silentPreviewPlayer = document.getElementById('silentPreviewPlayer');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const charCounterBox = document.getElementById('charCounterBox');
-        const MAX_CHAR_LIMIT = 100000;
-        
-        const customPlayPauseBtn = document.getElementById('customPlayPauseBtn');
-        const playerSeeker = document.getElementById('playerSeeker');
-        const playerTime = document.getElementById('playerTime');
+const fetchBtn = document.getElementById('fetchBtn');
+const tiktokUrl = document.getElementById('tiktokUrl');
+const resultArea = document.getElementById('resultArea');
 
-        // Character tracking count logic
-        scriptText.addEventListener('input', function() {
-            const len = this.value.length;
-            charCount.innerText = len;
+function escapeHtml(str){
+  const d = document.createElement('div');
+  d.innerText = str;
+  return d.innerHTML;
+}
 
-            if (len > MAX_CHAR_LIMIT) {
-                charCounterBox.classList.remove('text-white/80');
-                charCounterBox.classList.add('text-red-400', 'border-red-400/50');
-                scriptText.classList.remove('border-white/20');
-                scriptText.classList.add('border-red-500');
-            } else {
-                charCounterBox.classList.add('text-white/80');
-                charCounterBox.classList.remove('text-red-400', 'border-red-400/50');
-                scriptText.classList.add('border-white/20');
-                scriptText.classList.remove('border-red-500');
-            }
-        });
+function formatDuration(secs){
+  secs = Math.round(secs);
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  return `${m}:${s < 10 ? '0' : ''}${s}`;
+}
 
-        // FAQ accordion management toggle
-        function toggleFaq(el) {
-            const isActive = el.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) {
-                el.classList.add('active');
-            }
-        }
+async function fetchLink(){
+  const url = tiktokUrl.value.trim();
+  if(!url){
+    resultArea.innerHTML = `<div class="result-card bg-red-500/15 border border-red-300/30 text-white text-sm rounded-xl p-4">Please paste a TikTok link first.</div>`;
+    return;
+  }
 
-        // Render Voice Cards
-        function renderVoices(filterFavorites = false, query = "") {
-            voicesContainer.innerHTML = '';
-            let listToRender = filterFavorites ? voices.filter(v => v.isSection || favorites.includes(v.id)) : voices;
+  fetchBtn.disabled = true;
+  fetchBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Fetching...`;
+  resultArea.innerHTML = '';
 
-            if (query.trim() !== "") {
-                listToRender = listToRender.filter(v => 
-                    v.isSection ||
-                    v.name.toLowerCase().includes(query.toLowerCase()) || 
-                    v.id.toLowerCase().includes(query.toLowerCase())
-                );
-            }
+  try{
+    const res = await fetch('/api/fetch', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({url})
+    });
+    const data = await res.json();
 
-            // Remove section headers that have no voices following them before the next header
-            const cleaned = [];
-            for (let i = 0; i < listToRender.length; i++) {
-                const item = listToRender[i];
-                if (item.isSection) {
-                    const hasNext = listToRender[i + 1] && !listToRender[i + 1].isSection;
-                    if (hasNext) cleaned.push(item);
-                } else {
-                    cleaned.push(item);
-                }
-            }
-            listToRender = cleaned;
+    if(!data.success){
+      resultArea.innerHTML = `<div class="result-card bg-red-500/15 border border-red-300/30 text-white text-sm rounded-xl p-4">${escapeHtml(data.error || 'Something went wrong.')}</div>`;
+      return;
+    }
 
-            if (listToRender.length === 0) {
-                voicesContainer.innerHTML = `<div class="text-center text-white/50 py-10 text-sm">No voices found.</div>`;
-                return;
-            }
+    renderResult(data);
+  }catch(err){
+    resultArea.innerHTML = `<div class="result-card bg-red-500/15 border border-red-300/30 text-white text-sm rounded-xl p-4">Connection error. Please try again.</div>`;
+  }finally{
+    fetchBtn.disabled = false;
+    fetchBtn.innerHTML = `<i class="fa-solid fa-download"></i> Download`;
+  }
+}
 
-            const fragment = document.createDocumentFragment();
+fetchBtn.onclick = fetchLink;
 
-            listToRender.forEach(voice => {
-                if (voice.isSection) {
-                    const header = document.createElement('div');
-                    header.className = 'pt-3 pb-1 first:pt-0';
-                    header.innerHTML = `<p class="text-[11px] font-bold uppercase tracking-widest text-yellow-300/90 px-1">${voice.name}</p>`;
-                    fragment.appendChild(header);
-                    return;
-                }
+function renderResult(data){
+  const title = escapeHtml(data.title || 'TikTok video');
+  const durationText = data.duration ? formatDuration(data.duration) : null;
 
-                const isSelected = voice.id === selectedVoice;
-                const isFav = favorites.includes(voice.id);
-                const isPlayingThis = voice.id === currentlyPlayingVoiceId;
+  const thumbHtml = data.thumbnail
+    ? `<img src="${data.thumbnail}" loading="lazy" class="w-20 h-28 object-cover rounded-xl shrink-0" alt="thumbnail">`
+    : `<div class="w-20 h-28 rounded-xl bg-white/10 flex items-center justify-center shrink-0"><i class="fa-solid fa-video text-white/40 text-lg"></i></div>`;
 
-                const card = document.createElement('div');
-                card.className = `voice-card p-3 rounded-xl flex items-center justify-between cursor-pointer ${isSelected ? 'selected' : ''}`;
-                card.onclick = () => selectVoice(voice.id);
+  const videoDlUrl = `/api/download?src=${encodeURIComponent(data.video_url)}&type=video`;
+  const audioDlUrl = data.audio_url ? `/api/download?src=${encodeURIComponent(data.audio_url)}&type=audio` : null;
 
-                const isMale = voice.name.includes('[Male]');
+  resultArea.innerHTML = `
+    <div class="result-card paste-card p-4 text-left">
+      <div class="flex items-center gap-2 mb-3 pb-3 border-b border-white/10">
+        <i class="fa-solid fa-circle-check text-[var(--cyan)] text-sm"></i>
+        <span class="text-white/70 text-xs font-semibold uppercase tracking-wide">Ready to download</span>
+      </div>
+      <div class="flex gap-3.5">
+        <div class="relative shrink-0">
+          ${thumbHtml}
+          ${durationText ? `<span class="absolute bottom-1.5 right-1.5 bg-black/70 text-white text-[10px] font-semibold px-1.5 py-0.5 rounded">${durationText}</span>` : ''}
+        </div>
+        <div class="flex-1 min-w-0 flex flex-col">
+          <p class="text-white text-sm font-bold leading-snug line-clamp-3">${title}</p>
+          ${data.uploader ? `<p class="text-[var(--cyan)] text-xs font-medium mt-1.5"><i class="fa-solid fa-user text-[10px] mr-1"></i>@${escapeHtml(data.uploader)}</p>` : ''}
+          <div class="flex gap-2 mt-auto pt-3">
+            <button type="button" data-dl="${videoDlUrl}"
+               class="dl-trigger flex-1 text-center btn-primary text-xs font-bold rounded-lg py-2.5">
+               <i class="fa-solid fa-video mr-1"></i> Video</button>
+            ${audioDlUrl ? `<button type="button" data-dl="${audioDlUrl}"
+               class="dl-trigger flex-1 text-center bg-white/10 border border-white/20 text-white text-xs font-semibold rounded-lg py-2.5 hover:bg-white/20 transition">
+               <i class="fa-solid fa-music mr-1"></i> Audio</button>` : ''}
+          </div>
+          <div class="dl-status text-[11px] mt-2"></div>
+        </div>
+      </div>
+    </div>`;
 
-                card.innerHTML = `
-                    <div class="flex items-center space-x-3">
-                        <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
-                            <i class="fa-solid ${isMale ? 'fa-user-tie' : 'fa-user'}"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs font-semibold text-white">${voice.name}</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button id="playBtn-${voice.id}" onclick="event.stopPropagation(); testVoice('${voice.id}')" class="w-7 h-7 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
-                            <i class="fa-solid ${isPlayingThis ? 'fa-pause' : 'fa-play text-xs'}"></i>
-                        </button>
-                        <button onclick="event.stopPropagation(); toggleFavorite('${voice.id}')" class="w-7 h-7 rounded-lg bg-white/10 text-white hover:text-yellow-300 flex items-center justify-center transition">
-                            <i class="fa-${isFav ? 'solid' : 'regular'} fa-star ${isFav ? 'text-yellow-300' : ''} text-xs"></i>
-                        </button>
-                    </div>
-                `;
-                fragment.appendChild(card);
-            });
+  resultArea.querySelectorAll('.dl-trigger').forEach(btn => {
+    btn.addEventListener('click', handleDownloadClick);
+  });
+}
 
-            voicesContainer.appendChild(fragment);
-        }
+async function handleDownloadClick(){
+  const statusEl = resultArea.querySelector('.dl-status');
+  const originalHtml = this.innerHTML;
+  this.disabled = true;
+  this.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i>`;
+  statusEl.innerHTML = '';
 
-        function selectVoice(id) {
-            selectedVoice = id;
-            const currentTab = document.getElementById('favoritesTab').classList.contains('bg-white');
-            renderVoices(currentTab, searchInput.value);
-        }
+  try {
+    const dlUrl = this.getAttribute('data-dl');
+    const r = await fetch(dlUrl, { cache: 'no-store' });
+    if (!r.ok) {
+      const errData = await r.json().catch(() => ({}));
+      statusEl.innerHTML = `<span class="text-red-300">${escapeHtml(errData.error || 'Download failed. Please try again.')}</span>`;
+      return;
+    }
+    const blob = await r.blob();
+    const disposition = r.headers.get('Content-Disposition') || '';
+    const match = disposition.match(/filename="?([^"]+)"?/);
+    const filename = match ? match[1] : 'TikTokVideoDownloader.mp4';
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 4000);
+  } catch (err) {
+    statusEl.innerHTML = `<span class="text-red-300">Connection error. Please try again.</span>`;
+  } finally {
+    this.disabled = false;
+    this.innerHTML = originalHtml;
+  }
+}
 
-        function toggleFavorite(id) {
-            if (favorites.includes(id)) {
-                favorites = favorites.filter(favId => favId !== id);
-            } else {
-                favorites.push(id);
-            }
-            localStorage.setItem('tts_favorites', JSON.stringify(favorites));
-            const currentTab = document.getElementById('favoritesTab').classList.contains('bg-white');
-            renderVoices(currentTab, searchInput.value);
-        }
-
-        let searchDebounceTimer;
-        searchInput.oninput = function() {
-            clearTimeout(searchDebounceTimer);
-            const val = this.value;
-            searchDebounceTimer = setTimeout(() => {
-                const currentTab = document.getElementById('favoritesTab').classList.contains('bg-white');
-                renderVoices(currentTab, val);
-            }, 150);
-        };
-
-        // Preview sound test
-        async function testVoice(voiceId) {
-            const playIconBtn = document.querySelector(`#playBtn-${voiceId} i`);
-
-            if (currentlyPlayingVoiceId === voiceId) {
-                silentPreviewPlayer.pause();
-                currentlyPlayingVoiceId = null;
-                if (playIconBtn) {
-                    playIconBtn.className = 'fa-solid fa-play text-xs';
-                }
-                return;
-            }
-
-            if (currentlyPlayingVoiceId) {
-                const prevPlayIconBtn = document.querySelector(`#playBtn-${currentlyPlayingVoiceId} i`);
-                if (prevPlayIconBtn) prevPlayIconBtn.className = 'fa-solid fa-play text-xs';
-            }
-
-            try {
-                if (playIconBtn) {
-                    playIconBtn.className = 'fa-solid fa-spinner animate-spin text-xs';
-                }
-
-                const response = await fetch('/preview', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ voice: voiceId })
-                });
-                const data = await response.json();
-                
-                if (data.success) {
-                    currentlyPlayingVoiceId = voiceId;
-                    silentPreviewPlayer.src = data.audio_url;
-                    
-                    if (playIconBtn) {
-                        playIconBtn.className = 'fa-solid fa-pause';
-                    }
-                    silentPreviewPlayer.play();
-                } else {
-                    alert("Preview failed: " + data.error);
-                    if (playIconBtn) playIconBtn.className = 'fa-solid fa-play text-xs';
-                }
-            } catch (err) {
-                alert("Connection error! Please try again.");
-                if (playIconBtn) playIconBtn.className = 'fa-solid fa-play text-xs';
-            }
-        }
-
-        silentPreviewPlayer.onended = function() {
-            if (currentlyPlayingVoiceId) {
-                const playIconBtn = document.querySelector(`#playBtn-${currentlyPlayingVoiceId} i`);
-                if (playIconBtn) {
-                    playIconBtn.className = 'fa-solid fa-play text-xs';
-                }
-                currentlyPlayingVoiceId = null;
-            }
-        };
-
-        silentPreviewPlayer.onpause = function() {
-            if (currentlyPlayingVoiceId) {
-                const playIconBtn = document.querySelector(`#playBtn-${currentlyPlayingVoiceId} i`);
-                if (playIconBtn) {
-                    playIconBtn.className = 'fa-solid fa-play text-xs';
-                }
-                currentlyPlayingVoiceId = null;
-            }
-        };
-
-        // Tabs Toggle
-        document.getElementById('allVoicesTab').onclick = function() {
-            this.className = "flex-1 py-2 text-sm font-medium rounded-lg bg-white text-[#155dfc] shadow-md font-bold";
-            document.getElementById('favoritesTab').className = "flex-1 py-2 text-sm font-medium rounded-lg text-white hover:bg-white/10 transition font-semibold";
-            renderVoices(false, searchInput.value);
-        };
-
-        document.getElementById('favoritesTab').onclick = function() {
-            this.className = "flex-1 py-2 text-sm font-medium rounded-lg bg-white text-[#155dfc] shadow-md font-bold";
-            document.getElementById('allVoicesTab').className = "flex-1 py-2 text-sm font-medium rounded-lg text-white hover:bg-white/10 transition font-semibold";
-            renderVoices(true, searchInput.value);
-        };
-
-        // Main Voice Generation Action (Unique file mapping)
-        generateBtn.onclick = async function() {
-            const text = scriptText.value.trim();
-            if (!text) {
-                alert("Please enter a text script first!");
-                return;
-            }
-
-            if (text.length > MAX_CHAR_LIMIT) {
-                charCounterBox.classList.remove('text-white/80');
-                charCounterBox.classList.add('text-red-400', 'border-red-400/50');
-                scriptText.classList.remove('border-white/20');
-                scriptText.classList.add('border-red-500');
-                alert("Maximum limit is 100000 characters.");
-                return;
-            }
-
-            generateBtn.disabled = true;
-            generateBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-2"></i> Generating...`;
-
-            try {
-                if (currentlyPlayingVoiceId) {
-                    silentPreviewPlayer.pause();
-                }
-
-                const response = await fetch('/generate', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ text: text, voice: selectedVoice })
-                });
-                const data = await response.json();
-                
-                if (data.success) {
-                    generatedFileName = data.filename;
-                    
-                    audioPlayer.src = data.audio_url;
-                    audioPlayer.load();
-                    
-                    audioPlayer.onloadedmetadata = function() {
-                        audioPlayerContainer.classList.remove('hidden');
-                        playerSeeker.max = Math.floor(audioPlayer.duration);
-                        playerTime.innerText = `0:00 / ${formatTime(audioPlayer.duration)}`;
-                        audioPlayer.play();
-                        customPlayPauseBtn.innerHTML = `<i class="fa-solid fa-pause text-lg"></i>`;
-                    };
-                } else {
-                    alert("Generation failed: " + data.error);
-                }
-            } catch (err) {
-                alert("Server Connection Error! Please try again.");
-            } finally {
-                generateBtn.disabled = false;
-                generateBtn.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Generate Voice`;
-            }
-        };
-
-        // STOP Generation
-        stopBtn.onclick = async function() {
-            try {
-                await fetch('/stop', { method: 'POST' });
-            } catch (e) {}
-
-            audioPlayer.pause();
-            audioPlayer.currentTime = 0;
-            silentPreviewPlayer.pause();
-            silentPreviewPlayer.currentTime = 0;
-
-            if (currentlyPlayingVoiceId) {
-                const playIconBtn = document.querySelector(`#playBtn-${currentlyPlayingVoiceId} i`);
-                if (playIconBtn) playIconBtn.className = 'fa-solid fa-play text-xs';
-                currentlyPlayingVoiceId = null;
-            }
-
-            generateBtn.disabled = false;
-            generateBtn.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Generate Voice`;
-            
-            customPlayPauseBtn.innerHTML = `<i class="fa-solid fa-play text-lg"></i>`;
-            playerSeeker.value = 0;
-            playerTime.innerText = "0:00 / 0:00";
-        };
-
-        // CUSTOM PLAYER INTERFACE LOGIC
-        customPlayPauseBtn.onclick = function() {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                customPlayPauseBtn.innerHTML = `<i class="fa-solid fa-pause text-lg"></i>`;
-            } else {
-                audioPlayer.pause();
-                customPlayPauseBtn.innerHTML = `<i class="fa-solid fa-play text-lg"></i>`;
-            }
-        };
-
-        audioPlayer.ontimeupdate = function() {
-            if (audioPlayer.duration) {
-                playerSeeker.value = Math.floor(audioPlayer.currentTime);
-                playerTime.innerText = `${formatTime(audioPlayer.currentTime)} / ${formatTime(audioPlayer.duration)}`;
-            }
-        };
-
-        playerSeeker.oninput = function() {
-            audioPlayer.currentTime = playerSeeker.value;
-        };
-
-        audioPlayer.onended = function() {
-            customPlayPauseBtn.innerHTML = `<i class="fa-solid fa-play text-lg"></i>`;
-            playerSeeker.value = 0;
-        };
-
-        downloadBtn.onclick = function() {
-            if (audioPlayer.src && generatedFileName) {
-                const link = document.createElement('a');
-                link.href = audioPlayer.src;
-                link.download = generatedFileName;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } else {
-                alert("Please generate a voice clip first!");
-            }
-        };
-
-        function formatTime(secs) {
-            if (isNaN(secs)) return "0:00";
-            const minutes = Math.floor(secs / 60);
-            const seconds = Math.floor(secs % 60);
-            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
-
-        renderVoices();
-    </script>
+tiktokUrl.addEventListener('keydown', function(e){
+  if(e.key === 'Enter') fetchBtn.click();
+});
+</script>
 </body>
-    </html>
+</html>
