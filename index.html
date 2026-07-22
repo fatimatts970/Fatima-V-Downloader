@@ -337,10 +337,10 @@ function renderResult(data){
           <p class="text-white text-sm font-bold leading-snug line-clamp-3">${title}</p>
           ${data.uploader ? `<p class="text-[var(--cyan)] text-xs font-medium mt-1.5"><i class="fa-solid fa-user text-[10px] mr-1"></i>@${escapeHtml(data.uploader)}</p>` : ''}
           <div class="flex gap-2 mt-auto pt-3">
-            <button type="button" data-dl="${videoDlUrl}"
+            <button type="button" data-type="video"
                class="dl-trigger flex-1 text-center btn-primary text-xs font-bold rounded-lg py-2.5">
                <i class="fa-solid fa-video mr-1"></i> Video</button>
-            ${audioDlUrl ? `<button type="button" data-dl="${audioDlUrl}"
+            ${data.audio_url ? `<button type="button" data-type="audio"
                class="dl-trigger flex-1 text-center bg-white/10 border border-white/20 text-white text-xs font-semibold rounded-lg py-2.5 hover:bg-white/20 transition">
                <i class="fa-solid fa-music mr-1"></i> Audio</button>` : ''}
           </div>
@@ -349,6 +349,7 @@ function renderResult(data){
       </div>
     </div>`;
 
+  resultArea.dataset.originalUrl = tiktokUrl.value.trim();
   resultArea.querySelectorAll('.dl-trigger').forEach(btn => {
     btn.addEventListener('click', handleDownloadClick);
   });
@@ -357,12 +358,33 @@ function renderResult(data){
 async function handleDownloadClick(){
   const statusEl = resultArea.querySelector('.dl-status');
   const originalHtml = this.innerHTML;
+  const kind = this.getAttribute('data-type');
+  const originalUrl = resultArea.dataset.originalUrl;
   this.disabled = true;
   this.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i>`;
   statusEl.innerHTML = '';
 
   try {
-    const dlUrl = this.getAttribute('data-dl');
+    // Fetch a fresh link right before downloading, since TikTok media links expire quickly
+    const freshRes = await fetch('/api/fetch', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({url: originalUrl})
+    });
+    const freshData = await freshRes.json();
+
+    if (!freshData.success) {
+      statusEl.innerHTML = `<span class="text-red-300">${escapeHtml(freshData.error || 'Could not refresh this link.')}</span>`;
+      return;
+    }
+
+    const mediaUrl = kind === 'audio' ? freshData.audio_url : freshData.video_url;
+    if (!mediaUrl) {
+      statusEl.innerHTML = `<span class="text-red-300">No ${kind} available for this video.</span>`;
+      return;
+    }
+
+    const dlUrl = `/api/download?src=${encodeURIComponent(mediaUrl)}&type=${kind}`;
     const r = await fetch(dlUrl, { cache: 'no-store' });
     if (!r.ok) {
       const errData = await r.json().catch(() => ({}));
