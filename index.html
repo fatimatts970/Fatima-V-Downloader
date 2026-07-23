@@ -319,9 +319,6 @@ function renderResult(data){
     ? `<img src="${data.thumbnail}" loading="lazy" class="w-20 h-28 object-cover rounded-xl shrink-0" alt="thumbnail">`
     : `<div class="w-20 h-28 rounded-xl bg-white/10 flex items-center justify-center shrink-0"><i class="fa-solid fa-video text-white/40 text-lg"></i></div>`;
 
-  const videoDlUrl = `/api/download?src=${encodeURIComponent(data.video_url)}&type=video`;
-  const audioDlUrl = data.audio_url ? `/api/download?src=${encodeURIComponent(data.audio_url)}&type=audio` : null;
-
   resultArea.innerHTML = `
     <div class="result-card paste-card p-4 text-left">
       <div class="flex items-center gap-2 mb-3 pb-3 border-b border-white/10">
@@ -356,13 +353,14 @@ function renderResult(data){
 }
 
 async function handleDownloadClick(){
+  const allBtns = resultArea.querySelectorAll('.dl-trigger');
   const statusEl = resultArea.querySelector('.dl-status');
   const originalHtml = this.innerHTML;
   const kind = this.getAttribute('data-type');
   const originalUrl = resultArea.dataset.originalUrl;
-  this.disabled = true;
+  allBtns.forEach(b => b.disabled = true);
   this.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i>`;
-  statusEl.innerHTML = '';
+  statusEl.innerHTML = `<span class="text-white/50">Preparing your file, this can take a few seconds...</span>`;
 
   try {
     // Fetch a fresh link right before downloading, since TikTok media links expire quickly
@@ -403,11 +401,13 @@ async function handleDownloadClick(){
     a.click();
     document.body.removeChild(a);
     setTimeout(() => URL.revokeObjectURL(blobUrl), 4000);
+    statusEl.innerHTML = `<span class="text-emerald-300">Downloaded!</span>`;
   } catch (err) {
     statusEl.innerHTML = `<span class="text-red-300">Connection error. Please try again.</span>`;
   } finally {
-    this.disabled = false;
     this.innerHTML = originalHtml;
+    allBtns.forEach(b => b.disabled = true);
+    setTimeout(() => { allBtns.forEach(b => b.disabled = false); }, 2000);
   }
 }
 
