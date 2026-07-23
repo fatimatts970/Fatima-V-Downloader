@@ -27,6 +27,31 @@ def index():
     return send_from_directory(HTML_DIR, "index.html")
 
 
+import time as _time
+
+
+def call_tikwm(url):
+    last_error_result = None
+    for attempt in range(3):
+        try:
+            resp = requests.post(
+                TIKWM_API,
+                data={"url": url, "hd": 1},
+                headers=BROWSER_HEADERS,
+                timeout=20,
+            )
+            result = resp.json()
+        except Exception:
+            result = None
+
+        if result and result.get("code") == 0 and result.get("data"):
+            return result
+        last_error_result = result
+        if attempt < 2:
+            _time.sleep(1.5 * (attempt + 1))
+    return last_error_result
+
+
 @app.route("/api/fetch", methods=["POST"])
 def fetch():
     data = request.json or {}
@@ -38,19 +63,10 @@ def fetch():
     if not TIKTOK_URL_PATTERN.search(url):
         return jsonify({"success": False, "error": "That doesn't look like a valid TikTok link."})
 
-    try:
-        resp = requests.post(
-            TIKWM_API,
-            data={"url": url, "hd": 1},
-            headers=BROWSER_HEADERS,
-            timeout=20,
-        )
-        result = resp.json()
-    except Exception:
-        return jsonify({"success": False, "error": "Could not reach the video service. Please try again."})
+    result = call_tikwm(url)
 
-    if result.get("code") != 0 or not result.get("data"):
-        return jsonify({"success": False, "error": "Could not process this link. It may be private or unavailable."})
+    if not result or result.get("code") != 0 or not result.get("data"):
+        return jsonify({"success": False, "error": "The video service is busy right now. Please wait a few seconds and try again."})
 
     d = result["data"]
 
@@ -97,11 +113,19 @@ def download():
     filename = random_filename(ext)
     content_type = "audio/mpeg" if kind == "audio" else "video/mp4"
 
-    try:
-        upstream = requests.get(src, headers=BROWSER_HEADERS, stream=True, timeout=30)
-        upstream.raise_for_status()
-    except Exception:
-        return jsonify({"success": False, "error": "Download failed. Please try again."}), 502
+    upstream = None
+    for attempt in range(3):
+        try:
+            upstream = requests.get(src, headers=BROWSER_HEADERS, stream=True, timeout=30)
+            upstream.raise_for_status()
+            break
+        except Exception:
+            upstream = None
+            if attempt < 2:
+                _time.sleep(1.5 * (attempt + 1))
+
+    if upstream is None:
+        return jsonify({"success": False, "error": "Download failed. Please wait a moment and try again."}), 502
 
     def generate():
         for chunk in upstream.iter_content(chunk_size=65536):
