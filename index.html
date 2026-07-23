@@ -390,6 +390,10 @@ async function handleDownloadClick(){
       return;
     }
     const blob = await r.blob();
+    if (blob.size < 15000) {
+      statusEl.innerHTML = `<span class="text-red-300">This link isn't ready yet. Please try again in a moment.</span>`;
+      return;
+    }
     const disposition = r.headers.get('Content-Disposition') || '';
     const match = disposition.match(/filename="?([^"]+)"?/);
     const filename = match ? match[1] : 'TikTokVideoDownloader.mp4';
