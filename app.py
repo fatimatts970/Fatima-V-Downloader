@@ -113,11 +113,18 @@ def download():
     filename = random_filename(ext)
     content_type = "audio/mpeg" if kind == "audio" else "video/mp4"
 
+    MIN_VALID_SIZE = 15000  # bytes - real TikTok clips are never this small
+
     upstream = None
     for attempt in range(3):
         try:
-            upstream = requests.get(src, headers=BROWSER_HEADERS, stream=True, timeout=30)
-            upstream.raise_for_status()
+            candidate = requests.get(src, headers=BROWSER_HEADERS, stream=True, timeout=30)
+            candidate.raise_for_status()
+            content_length = candidate.headers.get("Content-Length")
+            if content_length is not None and int(content_length) < MIN_VALID_SIZE:
+                candidate.close()
+                raise ValueError("Response too small, likely invalid")
+            upstream = candidate
             break
         except Exception:
             upstream = None
@@ -125,7 +132,7 @@ def download():
                 _time.sleep(1.5 * (attempt + 1))
 
     if upstream is None:
-        return jsonify({"success": False, "error": "Download failed. Please wait a moment and try again."}), 502
+        return jsonify({"success": False, "error": "This link isn't ready yet. Please try downloading again in a moment."}), 502
 
     def generate():
         for chunk in upstream.iter_content(chunk_size=65536):
