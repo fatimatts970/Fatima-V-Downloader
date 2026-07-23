@@ -344,7 +344,11 @@ function renderResult(data){
           <div class="dl-status text-[11px] mt-2"></div>
         </div>
       </div>
-    </div>`;
+    </div>
+    <button type="button" onclick="location.reload()"
+       class="btn-primary w-full rounded-xl px-6 py-3.5 text-sm flex items-center justify-center gap-2 mt-3">
+       <i class="fa-solid fa-rotate-right"></i> Refresh Website
+    </button>`;
 
   resultArea.dataset.originalUrl = tiktokUrl.value.trim();
   resultArea.querySelectorAll('.dl-trigger').forEach(btn => {
